@@ -95,9 +95,9 @@ namespace UAS
                                     telepon, email, kode_provinsi, nama_provinsi, kode_kabupaten, 
                                     nama_kabupaten, kode_kecamatan, nama_kecamatan, kode_desa, 
                                     nama_desa, nama_dusun, alamat_luar_negeri, kota_luar_negeri, 
-                                    provinsi_negara_bagian, negara_luar_negeri, kode_pos_luar_negeri, 
-                                    jumlah_anggota_luar_negeri, telepon_luar_negeri, email_luar_negeri, 
-                                    kode_nama_negara, kode_nama_perwakilan_ri)
+                                    provinsi_negara_bagian_luar_negeri, negara_luar_negeri, kode_pos_luar_negeri, 
+                                    jumlah_anggota_keluarga_luar_negeri, telepon_luar_negeri, email_luar_negeri, 
+                                    kode_negara, kode_perwakilan_ri)
                                 VALUES (
                                     @nama_kepala_keluarga, @alamat, @kode_pos, @rt, @rw, @jumlah_anggota_keluarga, 
                                     @telepon, @alamat_email, @kode_provinsi, @nama_provinsi, @kode_kabupaten, 
