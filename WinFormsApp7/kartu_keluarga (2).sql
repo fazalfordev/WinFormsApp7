@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2024 at 10:33 AM
+-- Generation Time: Jul 22, 2024 at 05:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `anggotakeluarga` (
   `Nama_Lengkap` varchar(100) DEFAULT NULL,
   `Gelar_Depan` varchar(20) DEFAULT NULL,
   `Gelar_Belakang` varchar(20) DEFAULT NULL,
-  `Passport_Number` varchar(16) DEFAULT NULL,
+  `Passport_Number` varchar(20) DEFAULT NULL,
   `Tgl_Berakhir_Paspor` date DEFAULT NULL,
   `Nama_Sponsor` varchar(100) DEFAULT NULL,
   `Tipe_Sponsor` varchar(50) DEFAULT NULL,
@@ -76,7 +76,54 @@ CREATE TABLE `anggotakeluarga` (
 --
 
 INSERT INTO `anggotakeluarga` (`NIK`, `Nomor_KK`, `Nama_Lengkap`, `Gelar_Depan`, `Gelar_Belakang`, `Passport_Number`, `Tgl_Berakhir_Paspor`, `Nama_Sponsor`, `Tipe_Sponsor`, `Alamat_Sponsor`, `Jenis_Kelamin`, `Tempat_Lahir`, `Tanggal_Lahir`, `Kewarganegaraan`, `No_SK_Penetapan_WNI`, `Akta_Lahir`, `Nomor_Akta_Kelahiran`, `Golongan_Darah`, `Agama`, `Nama_Organisasi_Kepercayaan`, `Status_Perkawinan`, `Akta_Perkawinan`, `Nomor_Akta_Perkawinan`, `Tanggal_Perkawinan`, `Akta_Cerai`, `Nomor_Akta_Cerai`, `Tanggal_Perceraian`, `Status_Hubungan_Dalam_Keluarga`, `Kelainan_Fisik_dan_Mental`, `Penyandang_Cacat`, `Pendidikan_Terakhir`, `Jenis_Pekerjaan`, `Nomor_ITAS_ITAP`, `Tanggal_Terbit_ITAS_ITAP`, `Tanggal_Akhir_ITAS_ITAP`, `Tempat_Datang_Pertama`, `Tanggal_Kedatangan_Pertama`, `NIK_Ibu`, `Nama_Ibu`, `NIK_Ayah`, `Nama_Ayah`) VALUES
-('', '1234123412341234', 'aa', 'aaa', 'aa', 'bbb', NULL, 'vb', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('', '1234123412341234', 'Rakha Maulana', 'Mr.', 'M.T.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('4321432143214321', '1234123412341234', 'Rikhi Muilini', 'Mrs.', 'S.S.T.', NULL, '2024-07-22', 'PT. Dji Sam Soe', NULL, 'Jalan Ciseeng', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `datakeluarga`
+--
+
+CREATE TABLE `datakeluarga` (
+  `NIK` char(16) NOT NULL,
+  `nama_kepala_keluarga` varchar(255) DEFAULT NULL,
+  `alamat` text DEFAULT NULL,
+  `kode_pos` char(5) DEFAULT NULL,
+  `rt` char(3) DEFAULT NULL,
+  `rw` char(3) DEFAULT NULL,
+  `jumlah_anggota_keluarga` int(11) DEFAULT NULL,
+  `telepon` varchar(15) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `kode_provinsi` char(2) DEFAULT NULL,
+  `nama_provinsi` varchar(255) DEFAULT NULL,
+  `kode_kabupaten` char(2) DEFAULT NULL,
+  `nama_kabupaten` varchar(255) DEFAULT NULL,
+  `kode_kecamatan` char(2) DEFAULT NULL,
+  `nama_kecamatan` varchar(255) DEFAULT NULL,
+  `kode_desa` char(2) DEFAULT NULL,
+  `nama_desa` varchar(255) DEFAULT NULL,
+  `nama_dusun` varchar(255) DEFAULT NULL,
+  `alamat_luar_negeri` text DEFAULT NULL,
+  `kota_luar_negeri` varchar(255) DEFAULT NULL,
+  `provinsi_negara_bagian_luar_negeri` varchar(255) DEFAULT NULL,
+  `negara_luar_negeri` varchar(255) DEFAULT NULL,
+  `kode_pos_luar_negeri` char(10) DEFAULT NULL,
+  `jumlah_anggota_keluarga_luar_negeri` int(11) DEFAULT NULL,
+  `telepon_luar_negeri` varchar(15) DEFAULT NULL,
+  `email_luar_negeri` varchar(255) DEFAULT NULL,
+  `kode_negara` char(2) DEFAULT NULL,
+  `nama_negara` varchar(255) DEFAULT NULL,
+  `kode_perwakilan_ri` char(2) DEFAULT NULL,
+  `nama_perwakilan_ri` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `datakeluarga`
+--
+
+INSERT INTO `datakeluarga` (`NIK`, `nama_kepala_keluarga`, `alamat`, `kode_pos`, `rt`, `rw`, `jumlah_anggota_keluarga`, `telepon`, `email`, `kode_provinsi`, `nama_provinsi`, `kode_kabupaten`, `nama_kabupaten`, `kode_kecamatan`, `nama_kecamatan`, `kode_desa`, `nama_desa`, `nama_dusun`, `alamat_luar_negeri`, `kota_luar_negeri`, `provinsi_negara_bagian_luar_negeri`, `negara_luar_negeri`, `kode_pos_luar_negeri`, `jumlah_anggota_keluarga_luar_negeri`, `telepon_luar_negeri`, `email_luar_negeri`, `kode_negara`, `nama_negara`, `kode_perwakilan_ri`, `nama_perwakilan_ri`) VALUES
+('', '', ' ', '16120', '', '', 0, '', '', '32', 'Jawa Barat', '01', 'Kabupaten Bogor', '11', 'Kecamatan Ciseeng', '1', 'Kelurahan CIBEUTEUNG MUARA', 'Rambipuji', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,6 +152,12 @@ INSERT INTO `kartukeluarga` (`Nomor_KK`) VALUES
 ALTER TABLE `anggotakeluarga`
   ADD PRIMARY KEY (`NIK`),
   ADD KEY `Nomor_KK` (`Nomor_KK`);
+
+--
+-- Indexes for table `datakeluarga`
+--
+ALTER TABLE `datakeluarga`
+  ADD PRIMARY KEY (`NIK`);
 
 --
 -- Indexes for table `kartukeluarga`
