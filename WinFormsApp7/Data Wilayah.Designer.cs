@@ -19,6 +19,7 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
+            checkBox1 = new CheckBox();
             button1 = new Button();
             label2 = new Label();
             Kode_Provinsi = new TextBox();
@@ -35,7 +36,6 @@
             label6 = new Label();
             Nama_Dusun = new TextBox();
             label7 = new Label();
-            checkBox1 = new CheckBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,6 +77,17 @@
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             groupBox1.Text = "Informasi Wilayah";
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(434, 218);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(203, 19);
+            checkBox1.TabIndex = 18;
+            checkBox1.Text = "Anggota Keluarga di Luar Negeri?";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged_1;
             // 
             // button1
             // 
@@ -228,17 +239,6 @@
             label7.Name = "label7";
             label7.Size = new Size(0, 15);
             label7.TabIndex = 16;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(448, 218);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(200, 19);
-            checkBox1.TabIndex = 18;
-            checkBox1.Text = "Memiliki Keluarga di Luar Neger?";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // Data_Wilayah
             // 

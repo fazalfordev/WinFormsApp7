@@ -19,6 +19,9 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
+            button1 = new Button();
             label2 = new Label();
             AlamatLN = new TextBox();
             label3 = new Label();
@@ -32,14 +35,13 @@
             label7 = new Label();
             Jumlah_Anggota_KeluargaLN = new TextBox();
             label8 = new Label();
-            Kode_Nama_NegaraLN = new TextBox();
+            Kode_NegaraLN = new TextBox();
             label9 = new Label();
-            Kode_Nama_Perwakilan_RILN = new TextBox();
+            Kode_Perwakilan_RILN = new TextBox();
             label10 = new Label();
             TeleponLN = new TextBox();
             label11 = new Label();
             EmailLN = new TextBox();
-            button1 = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,6 +58,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(AlamatLN);
@@ -70,9 +74,9 @@
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(Jumlah_Anggota_KeluargaLN);
             groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(Kode_Nama_NegaraLN);
+            groupBox1.Controls.Add(Kode_NegaraLN);
             groupBox1.Controls.Add(label9);
-            groupBox1.Controls.Add(Kode_Nama_Perwakilan_RILN);
+            groupBox1.Controls.Add(Kode_Perwakilan_RILN);
             groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(TeleponLN);
             groupBox1.Controls.Add(label11);
@@ -85,6 +89,34 @@
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             groupBox1.Text = "Informasi Alamat";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(309, 264);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(339, 23);
+            textBox2.TabIndex = 32;
+            textBox2.TextChanged += textBox2_TextChanged;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(309, 230);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(339, 23);
+            textBox1.TabIndex = 31;
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(318, 318);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 30;
+            button1.Text = "Simpan";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label2
             // 
@@ -203,14 +235,14 @@
             label8.TabIndex = 19;
             label8.Text = "Kode-Nama Negara";
             // 
-            // Kode_Nama_NegaraLN
+            // Kode_NegaraLN
             // 
-            Kode_Nama_NegaraLN.Location = new Point(236, 230);
-            Kode_Nama_NegaraLN.Margin = new Padding(3, 2, 3, 2);
-            Kode_Nama_NegaraLN.Name = "Kode_Nama_NegaraLN";
-            Kode_Nama_NegaraLN.Size = new Size(412, 23);
-            Kode_Nama_NegaraLN.TabIndex = 20;
-            Kode_Nama_NegaraLN.TextChanged += Kode_Nama_Negara_TextChanged;
+            Kode_NegaraLN.Location = new Point(236, 230);
+            Kode_NegaraLN.Margin = new Padding(3, 2, 3, 2);
+            Kode_NegaraLN.Name = "Kode_NegaraLN";
+            Kode_NegaraLN.Size = new Size(50, 23);
+            Kode_NegaraLN.TabIndex = 20;
+            Kode_NegaraLN.TextChanged += Kode_Nama_Negara_TextChanged;
             // 
             // label9
             // 
@@ -221,14 +253,14 @@
             label9.TabIndex = 22;
             label9.Text = "Kode-Nama Perwakilan RI";
             // 
-            // Kode_Nama_Perwakilan_RILN
+            // Kode_Perwakilan_RILN
             // 
-            Kode_Nama_Perwakilan_RILN.Location = new Point(236, 264);
-            Kode_Nama_Perwakilan_RILN.Margin = new Padding(3, 2, 3, 2);
-            Kode_Nama_Perwakilan_RILN.Name = "Kode_Nama_Perwakilan_RILN";
-            Kode_Nama_Perwakilan_RILN.Size = new Size(412, 23);
-            Kode_Nama_Perwakilan_RILN.TabIndex = 23;
-            Kode_Nama_Perwakilan_RILN.TextChanged += Kode_Nama_Perwakilan_RI_TextChanged;
+            Kode_Perwakilan_RILN.Location = new Point(236, 264);
+            Kode_Perwakilan_RILN.Margin = new Padding(3, 2, 3, 2);
+            Kode_Perwakilan_RILN.Name = "Kode_Perwakilan_RILN";
+            Kode_Perwakilan_RILN.Size = new Size(50, 23);
+            Kode_Perwakilan_RILN.TabIndex = 23;
+            Kode_Perwakilan_RILN.TextChanged += Kode_Nama_Perwakilan_RI_TextChanged;
             // 
             // label10
             // 
@@ -266,16 +298,6 @@
             EmailLN.TabIndex = 29;
             EmailLN.TextChanged += Email_TextChanged;
             // 
-            // button1
-            // 
-            button1.Location = new Point(318, 318);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 30;
-            button1.Text = "Submit";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // Data_Alamat_WNI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -308,14 +330,16 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Jumlah_Anggota_KeluargaLN;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox Kode_Nama_NegaraLN;
+        private System.Windows.Forms.TextBox Kode_NegaraLN;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox Kode_Nama_Perwakilan_RILN;
+        private System.Windows.Forms.TextBox Kode_Perwakilan_RILN;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox TeleponLN;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox EmailLN;
         private System.Windows.Forms.Label label11;
         private Button button1;
+        private TextBox textBox2;
+        private TextBox textBox1;
     }
 }

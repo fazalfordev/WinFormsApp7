@@ -16,7 +16,7 @@ namespace UAS
         {
             InitializeComponent();
         }
-
+        public string NIKKepalaKeluarga => textBox1.Text;
         public string NamaKepalaKeluarga => Nama_Kepala_Keluarga.Text;
         public string Alamat => Alamat1.Text + " " + Alamat2.Text;
         public string KodePos => Kode_Pos.Text;
@@ -73,10 +73,20 @@ namespace UAS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (Data_Wilayah data_Wilayah = new Data_Wilayah())
+            using (Data_Wilayah data_Wilayah = new Data_Wilayah(this))
             {
                 data_Wilayah.ShowDialog();
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Data_Kepala_Keluarga_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

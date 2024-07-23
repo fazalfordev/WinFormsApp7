@@ -13,27 +13,23 @@ namespace UAS
 {
     public partial class Data_Wilayah : Form
     {
-        private Data_Kepala_Keluarga dataKepalaKeluargaForm;
-        private Data_Alamat_WNI dataAlamatWNIForm;
-        private bool isLivingAbroad;
-
-        public Data_Wilayah()
+        private Data_Kepala_Keluarga parentForm;
+        private Data_Alamat_WNI dataAlamatWNI;
+        public Data_Wilayah(Data_Kepala_Keluarga parent)
         {
             InitializeComponent();
-            dataKepalaKeluargaForm = new Data_Kepala_Keluarga();
-            dataAlamatWNIForm = new Data_Alamat_WNI(dataKepalaKeluargaForm, this); // Pass the required parameters
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            this.parentForm = parent;
         }
 
-        public string KodeProvinsi => Kode_Provinsi.Text;
-        public string NamaProvinsi => Nama_Provinsi.Text;
-        public string KodeKabupaten => Kode_Kabupaten.Text;
-        public string NamaKabupaten => Nama_Kabupaten.Text;
-        public string KodeKecamatan => Kode_Kecamatan.Text;
-        public string NamaKecamatan => Nama_Kecamatan.Text;
-        public string KodeKelurahan => Kode_Kelurahan.Text;
-        public string NamaKelurahan => Nama_Kelurahan.Text;
-        public string NamaDusun => Nama_Dusun.Text;
+        //public string KodeProvinsi => Kode_Provinsi.Text;
+        //public string NamaProvinsi => Nama_Provinsi.Text;
+        //public string KodeKabupaten => Kode_Kabupaten.Text;
+        //public string NamaKabupaten => Nama_Kabupaten.Text;
+        //public string KodeKecamatan => Kode_Kecamatan.Text;
+        //public string NamaKecamatan => Nama_Kecamatan.Text;
+        //public string KodeKelurahan => Kode_Kelurahan.Text;
+        //public string NamaKelurahan => Nama_Kelurahan.Text;
+        //public string NamaDusun => Nama_Dusun.Text;
 
         private void Kode_Provinsi_TextChanged(object sender, EventArgs e)
         {
@@ -87,91 +83,102 @@ namespace UAS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;database=kartu_keluarga;user=root;password=;";
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            if (checkBox1.Checked && dataAlamatWNI != null)
             {
-                string query = @"INSERT INTO datakeluarga (
-                                    nama_kepala_keluarga, alamat, kode_pos, rt, rw, jumlah_anggota_keluarga, 
-                                    telepon, email, kode_provinsi, nama_provinsi, kode_kabupaten, 
-                                    nama_kabupaten, kode_kecamatan, nama_kecamatan, kode_desa, 
-                                    nama_desa, nama_dusun, alamat_luar_negeri, kota_luar_negeri, 
-                                    provinsi_negara_bagian_luar_negeri, negara_luar_negeri, kode_pos_luar_negeri, 
-                                    jumlah_anggota_keluarga_luar_negeri, telepon_luar_negeri, email_luar_negeri, 
-                                    kode_negara, kode_perwakilan_ri)
-                                VALUES (
-                                    @nama_kepala_keluarga, @alamat, @kode_pos, @rt, @rw, @jumlah_anggota_keluarga, 
-                                    @telepon, @alamat_email, @kode_provinsi, @nama_provinsi, @kode_kabupaten, 
-                                    @nama_kabupaten, @kode_kecamatan, @nama_kecamatan, @kode_desa, 
-                                    @nama_desa, @nama_dusun, @alamat_luar_negeri, @kota_luar_negeri, 
-                                    @provinsi_negara_bagian, @negara_luar_negeri, @kode_pos_luar_negeri, 
-                                    @jumlah_anggota_luar_negeri, @telepon_luar_negeri, @email_luar_negeri, 
-                                    @kode_nama_negara, @kode_nama_perwakilan_ri)";
+                SaveDataWithAlamatWNI();
+                MessageBox.Show("Data WNI nonluar-negeri berhasil disimpan");
+            }
+            else
+            {
+                SaveDataWithoutAlamatWNI();
+                MessageBox.Show("Data WNI luar negeri berhasil disimpan");
+            }
+        }
 
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@nama_kepala_keluarga", dataKepalaKeluargaForm.NamaKepalaKeluarga);
-                command.Parameters.AddWithValue("@alamat", dataKepalaKeluargaForm.Alamat);
-                command.Parameters.AddWithValue("@kode_pos", dataKepalaKeluargaForm.KodePos);
-                command.Parameters.AddWithValue("@rt", dataKepalaKeluargaForm.Rt);
-                command.Parameters.AddWithValue("@rw", dataKepalaKeluargaForm.Rw);
-                command.Parameters.AddWithValue("@jumlah_anggota_keluarga", dataKepalaKeluargaForm.JumlahAnggotaKeluarga);
-                command.Parameters.AddWithValue("@telepon", dataKepalaKeluargaForm.Telepon);
-                command.Parameters.AddWithValue("@alamat_email", dataKepalaKeluargaForm.EMail);
-                command.Parameters.AddWithValue("@kode_provinsi", KodeProvinsi);
-                command.Parameters.AddWithValue("@nama_provinsi", NamaProvinsi);
-                command.Parameters.AddWithValue("@kode_kabupaten", KodeKabupaten);
-                command.Parameters.AddWithValue("@nama_kabupaten", NamaKabupaten);
-                command.Parameters.AddWithValue("@kode_kecamatan", KodeKecamatan);
-                command.Parameters.AddWithValue("@nama_kecamatan", NamaKecamatan);
-                command.Parameters.AddWithValue("@kode_desa", KodeKelurahan);
-                command.Parameters.AddWithValue("@nama_desa", NamaKelurahan);
-                command.Parameters.AddWithValue("@nama_dusun", NamaDusun);
-
-                if (isLivingAbroad)
+        private void SaveDataWithAlamatWNI()
+        {
+            string connectionString = "Server=localhost;Database=kartu_keluarga;User ID=root;Password=;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "INSERT INTO datakeluarga (NIK, nama_kepala_keluarga, alamat, kode_pos, rt, rw, jumlah_anggota_keluarga, telepon, email, kode_provinsi, nama_provinsi, kode_kabupaten, nama_kabupaten, kode_kecamatan, nama_kecamatan, kode_desa, nama_desa, nama_dusun, alamat_luar_negeri, kota_luar_negeri, provinsi_negara_bagian_luar_negeri, negara_luar_negeri, kode_pos_luar_negeri, jumlah_anggota_keluarga_luar_negeri, telepon_luar_negeri, email_luar_negeri, kode_negara, nama_negara, kode_perwakilan_ri, nama_perwakilan_ri) VALUES (@NIK, @NamaKepalaKeluarga, @Alamat, @KodePos, @Rt, @Rw, @JumlahAnggotaKeluarga, @Telepon, @Email, @KodeProvinsi, @NamaProvinsi, @KodeKabupaten, @NamaKabupaten, @KodeKecamatan, @NamaKecamatan, @KodeDesa, @NamaDesa, @NamaDusun, @AlamatLuarNegeri, @KotaLuarNegeri, @ProvinsiLuarNegeri, @NegaraLuarNegeri, @KodePosLuarNegeri, @JumlahAnggotaKeluargaLuarNegeri, @TeleponLuarNegeri, @EmailLuarNegeri, @KodeNegara, @NamaNegara, @KodePerwakilanRI, @NamaPerwakilanRI)";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@alamat_luar_negeri", dataAlamatWNIForm.Alamat);
-                    command.Parameters.AddWithValue("@kota_luar_negeri", dataAlamatWNIForm.Kota);
-                    command.Parameters.AddWithValue("@provinsi_negara_bagian", dataAlamatWNIForm.Provinsi);
-                    command.Parameters.AddWithValue("@negara_luar_negeri", dataAlamatWNIForm.Negara);
-                    command.Parameters.AddWithValue("@kode_pos_luar_negeri", dataAlamatWNIForm.KodePos);
-                    command.Parameters.AddWithValue("@jumlah_anggota_luar_negeri", dataAlamatWNIForm.JumlahAnggotaKeluarga);
-                    command.Parameters.AddWithValue("@telepon_luar_negeri", dataAlamatWNIForm.Telepon);
-                    command.Parameters.AddWithValue("@email_luar_negeri", dataAlamatWNIForm.Email);
-                    command.Parameters.AddWithValue("@kode_nama_negara", dataAlamatWNIForm.KodeNamaNegara);
-                    command.Parameters.AddWithValue("@kode_nama_perwakilan_ri", dataAlamatWNIForm.KodeNamaPerwakilanRI);
-                }
-                else
-                {
-                    command.Parameters.AddWithValue("@alamat_luar_negeri", DBNull.Value);
-                    command.Parameters.AddWithValue("@kota_luar_negeri", DBNull.Value);
-                    command.Parameters.AddWithValue("@provinsi_negara_bagian", DBNull.Value);
-                    command.Parameters.AddWithValue("@negara_luar_negeri", DBNull.Value);
-                    command.Parameters.AddWithValue("@kode_pos_luar_negeri", DBNull.Value);
-                    command.Parameters.AddWithValue("@jumlah_anggota_luar_negeri", DBNull.Value);
-                    command.Parameters.AddWithValue("@telepon_luar_negeri", DBNull.Value);
-                    command.Parameters.AddWithValue("@email_luar_negeri", DBNull.Value);
-                    command.Parameters.AddWithValue("@kode_nama_negara", DBNull.Value);
-                    command.Parameters.AddWithValue("@kode_nama_perwakilan_ri", DBNull.Value);
-                }
-
-                try
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Data successfully saved!");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message);
+                    cmd.Parameters.AddWithValue("@NIK", parentForm.NIKKepalaKeluarga);
+                    cmd.Parameters.AddWithValue("@NamaKepalaKeluarga", parentForm.NamaKepalaKeluarga);
+                    cmd.Parameters.AddWithValue("@Alamat", parentForm.Alamat);
+                    cmd.Parameters.AddWithValue("@KodePos", parentForm.KodePos);
+                    cmd.Parameters.AddWithValue("@Rt", parentForm.Rt);
+                    cmd.Parameters.AddWithValue("@Rw", parentForm.Rw);
+                    cmd.Parameters.AddWithValue("@JumlahAnggotaKeluarga", parentForm.JumlahAnggotaKeluarga);
+                    cmd.Parameters.AddWithValue("@Telepon", parentForm.Telepon);
+                    cmd.Parameters.AddWithValue("@Email", parentForm.EMail);
+                    cmd.Parameters.AddWithValue("@KodeProvinsi", Kode_Provinsi.Text);
+                    cmd.Parameters.AddWithValue("@NamaProvinsi", Nama_Provinsi.Text);
+                    cmd.Parameters.AddWithValue("@KodeKabupaten", Kode_Kabupaten.Text);
+                    cmd.Parameters.AddWithValue("@NamaKabupaten", Nama_Kabupaten.Text);
+                    cmd.Parameters.AddWithValue("@KodeKecamatan", Kode_Kecamatan.Text);
+                    cmd.Parameters.AddWithValue("@NamaKecamatan", Nama_Kecamatan.Text);
+                    cmd.Parameters.AddWithValue("@KodeDesa", Kode_Kelurahan.Text);
+                    cmd.Parameters.AddWithValue("@NamaDesa", Nama_Kelurahan.Text);
+                    cmd.Parameters.AddWithValue("@NamaDusun", Nama_Dusun.Text);
+                    cmd.Parameters.AddWithValue("@AlamatLuarNegeri", dataAlamatWNI.Alamat);
+                    cmd.Parameters.AddWithValue("@KotaLuarNegeri", dataAlamatWNI.Kota);
+                    cmd.Parameters.AddWithValue("@ProvinsiLuarNegeri", dataAlamatWNI.Provinsi);
+                    cmd.Parameters.AddWithValue("@NegaraLuarNegeri", dataAlamatWNI.Negara);
+                    cmd.Parameters.AddWithValue("@KodePosLuarNegeri", dataAlamatWNI.KodePos);
+                    cmd.Parameters.AddWithValue("@JumlahAnggotaKeluargaLuarNegeri", dataAlamatWNI.JumlahAnggotaKeluarga);
+                    cmd.Parameters.AddWithValue("@TeleponLuarNegeri", dataAlamatWNI.Telepon);
+                    cmd.Parameters.AddWithValue("@EmailLuarNegeri", dataAlamatWNI.Email);
+                    cmd.Parameters.AddWithValue("@KodeNegara", dataAlamatWNI.KodeNegara);
+                    cmd.Parameters.AddWithValue("@NamaNegara", dataAlamatWNI.NamaNegara);
+                    cmd.Parameters.AddWithValue("@KodePerwakilanRI", dataAlamatWNI.KodePerwakilanRI);
+                    cmd.Parameters.AddWithValue("@NamaPerwakilanRI", dataAlamatWNI.NamaPerwakilanRI);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void SaveDataWithoutAlamatWNI()
         {
-            isLivingAbroad = checkBox1.Checked;
-            if (isLivingAbroad)
+            string connectionString = "Server=localhost;Database=kartu_keluarga;User ID=root;Password=;";
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
-                dataAlamatWNIForm.ShowDialog();
+                conn.Open();
+                string query = "INSERT INTO datakeluarga (NIK, nama_kepala_keluarga, alamat, kode_pos, rt, rw, jumlah_anggota_keluarga, telepon, email, kode_provinsi, nama_provinsi, kode_kabupaten, nama_kabupaten, kode_kecamatan, nama_kecamatan, kode_desa, nama_desa, nama_dusun, alamat_luar_negeri, kota_luar_negeri, provinsi_negara_bagian_luar_negeri, negara_luar_negeri, kode_pos_luar_negeri, jumlah_anggota_keluarga_luar_negeri, telepon_luar_negeri, email_luar_negeri, kode_negara, nama_negara, kode_perwakilan_ri, nama_perwakilan_ri) VALUES (@NIK, @NamaKepalaKeluarga, @Alamat, @KodePos, @Rt, @Rw, @JumlahAnggotaKeluarga, @Telepon, @Email, @KodeProvinsi, @NamaProvinsi, @KodeKabupaten, @NamaKabupaten, @KodeKecamatan, @NamaKecamatan, @KodeDesa, @NamaDesa, @NamaDusun, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@NIK", parentForm.NIKKepalaKeluarga);
+                    cmd.Parameters.AddWithValue("@NamaKepalaKeluarga", parentForm.NamaKepalaKeluarga);
+                    cmd.Parameters.AddWithValue("@Alamat", parentForm.Alamat);
+                    cmd.Parameters.AddWithValue("@KodePos", parentForm.KodePos);
+                    cmd.Parameters.AddWithValue("@Rt", parentForm.Rt);
+                    cmd.Parameters.AddWithValue("@Rw", parentForm.Rw);
+                    cmd.Parameters.AddWithValue("@JumlahAnggotaKeluarga", parentForm.JumlahAnggotaKeluarga);
+                    cmd.Parameters.AddWithValue("@Telepon", parentForm.Telepon);
+                    cmd.Parameters.AddWithValue("@Email", parentForm.EMail);
+                    cmd.Parameters.AddWithValue("@KodeProvinsi", Kode_Provinsi.Text);
+                    cmd.Parameters.AddWithValue("@NamaProvinsi", Nama_Provinsi.Text);
+                    cmd.Parameters.AddWithValue("@KodeKabupaten", Kode_Kabupaten.Text);
+                    cmd.Parameters.AddWithValue("@NamaKabupaten", Nama_Kabupaten.Text);
+                    cmd.Parameters.AddWithValue("@KodeKecamatan", Kode_Kecamatan.Text);
+                    cmd.Parameters.AddWithValue("@NamaKecamatan", Nama_Kecamatan.Text);
+                    cmd.Parameters.AddWithValue("@KodeDesa", Kode_Kelurahan.Text);
+                    cmd.Parameters.AddWithValue("@NamaDesa", Nama_Kelurahan.Text);
+                    cmd.Parameters.AddWithValue("@NamaDusun", Nama_Dusun.Text);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                using (dataAlamatWNI = new Data_Alamat_WNI())
+                {
+                    dataAlamatWNI.ShowDialog();
+                }
             }
         }
     }
