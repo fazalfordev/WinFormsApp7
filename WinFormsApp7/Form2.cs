@@ -33,7 +33,7 @@ namespace WinFormsApp7
             try
             {
                 connection.Open();
-                string query = "SELECT * FROM anggotakeluarga WHERE Nomor_KK = @NomorKK ORDER BY CASE WHEN NIK IS NULL OR NIK = '' THEN 1 ELSE 0 END, NIK ASC";
+                string query = "SELECT * FROM gabungan_keluarga WHERE Nomor_KK = @NomorKK ORDER BY CASE WHEN NIK IS NULL OR NIK = '' THEN 1 ELSE 0 END, NIK ASC";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@NomorKK", nomorKK);
 
@@ -114,7 +114,7 @@ namespace WinFormsApp7
                 {
                     connection.Open();
                     string nik = dataGridView1.CurrentRow.Cells["NIK"].Value.ToString();
-                    string query = "DELETE FROM anggotakeluarga WHERE NIK = @nik";
+                    string query = "DELETE FROM gabungan_keluarga WHERE NIK = @nik";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@nik", nik);
                     command.ExecuteNonQuery();
