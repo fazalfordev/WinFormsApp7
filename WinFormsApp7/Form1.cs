@@ -46,53 +46,45 @@ namespace WinFormsApp7
 
         private void addKKButton_Click(object sender, EventArgs e)
         {
-            string newKKNumber = GetNomorKK();
-
-            if (!string.IsNullOrEmpty(newKKNumber))
+            Data_Kepala_Keluarga dataKepalaKeluargaForm = new Data_Kepala_Keluarga();
+            if (dataKepalaKeluargaForm.ShowDialog() == DialogResult.OK)
             {
-                Data_Kepala_Keluarga dataKepalaKeluargaForm = new Data_Kepala_Keluarga();
-                if (dataKepalaKeluargaForm.ShowDialog() == DialogResult.OK)
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
-                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    string newKKNumber = GetNomorKK();
+                    string insertKKQuery = "INSERT INTO KartuKeluarga (Nomor_KK) VALUES (@NomorKK)";
+                    MySqlCommand insertKKCommand = new MySqlCommand(insertKKQuery, connection);
+                    insertKKCommand.Parameters.AddWithValue("@NomorKK", newKKNumber);
+
+                    connection.Open();
+                    MySqlTransaction transaction = connection.BeginTransaction();
+
+                    try
                     {
-                        string insertKKQuery = "INSERT INTO KartuKeluarga (Nomor_KK) VALUES (@NomorKK)";
-                        MySqlCommand insertKKCommand = new MySqlCommand(insertKKQuery, connection);
-                        insertKKCommand.Parameters.AddWithValue("@NomorKK", newKKNumber);
+                        insertKKCommand.Transaction = transaction;
+                        insertKKCommand.ExecuteNonQuery();
 
-                        connection.Open();
-                        MySqlTransaction transaction = connection.BeginTransaction();
+                        // Collect data from the Data_Kepala_Keluarga form
+                        string namaKepalaKeluarga = dataKepalaKeluargaForm.NamaKepalaKeluarga;
+                        string alamat = dataKepalaKeluargaForm.Alamat;
+                        string kodePos = dataKepalaKeluargaForm.KodePos;
+                        string rt = dataKepalaKeluargaForm.Rt;
+                        string rw = dataKepalaKeluargaForm.Rw;
+                        string jumlahAnggotaKeluarga = dataKepalaKeluargaForm.JumlahAnggotaKeluarga;
+                        string telepon = dataKepalaKeluargaForm.Telepon;
+                        string email = dataKepalaKeluargaForm.EMail;
 
-                        try
-                        {
-                            insertKKCommand.Transaction = transaction;
-                            insertKKCommand.ExecuteNonQuery();
+                        // Insert additional data as needed
 
-                            // Collect data from the Data_Kepala_Keluarga form
-                            string namaKepalaKeluarga = dataKepalaKeluargaForm.NamaKepalaKeluarga;
-                            string alamat = dataKepalaKeluargaForm.Alamat;
-                            string kodePos = dataKepalaKeluargaForm.KodePos;
-                            string rt = dataKepalaKeluargaForm.Rt;
-                            string rw = dataKepalaKeluargaForm.Rw;
-                            string jumlahAnggotaKeluarga = dataKepalaKeluargaForm.JumlahAnggotaKeluarga;
-                            string telepon = dataKepalaKeluargaForm.Telepon;
-                            string email = dataKepalaKeluargaForm.EMail;
-
-                            // Insert additional data as needed
-
-                            transaction.Commit();
-                            MessageBox.Show("Nomor KK dan data Kepala Keluarga berhasil ditambahkan.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch (MySqlException ex)
-                        {
-                            transaction.Rollback();
-                            MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        transaction.Commit();
+                        MessageBox.Show("Nomor KK dan data Kepala Keluarga berhasil ditambahkan.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (MySqlException ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Pastikan input sudah 16 digit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
