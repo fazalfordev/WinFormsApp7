@@ -1,4 +1,5 @@
 using MySql.Data.MySqlClient;
+using UAS;
 
 namespace WinFormsApp7
 {
@@ -46,39 +47,46 @@ namespace WinFormsApp7
         private void addKKButton_Click(object sender, EventArgs e)
         {
             string newKKNumber = GetNomorKK();
-            string nikKepalaKeluarga = GetNIK();
 
-            if (!string.IsNullOrEmpty(newKKNumber) && !string.IsNullOrEmpty(nikKepalaKeluarga))
+            if (!string.IsNullOrEmpty(newKKNumber))
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                Data_Kepala_Keluarga dataKepalaKeluargaForm = new Data_Kepala_Keluarga();
+                if (dataKepalaKeluargaForm.ShowDialog() == DialogResult.OK)
                 {
-                    string insertKKQuery = "INSERT INTO KartuKeluarga (Nomor_KK) VALUES (@NomorKK)";
-                    MySqlCommand insertKKCommand = new MySqlCommand(insertKKQuery, connection);
-                    insertKKCommand.Parameters.AddWithValue("@NomorKK", newKKNumber);
-
-                    string insertAnggotaQuery = "INSERT INTO AnggotaKeluarga (NIK, Nomor_KK, Status_Hubungan_Dalam_Keluarga) VALUES (@NIK, @NomorKK, 'Kepala Keluarga')";
-                    MySqlCommand insertAnggotaCommand = new MySqlCommand(insertAnggotaQuery, connection);
-                    insertAnggotaCommand.Parameters.AddWithValue("@NIK", nikKepalaKeluarga);
-                    insertAnggotaCommand.Parameters.AddWithValue("@NomorKK", newKKNumber);
-
-                    connection.Open();
-                    MySqlTransaction transaction = connection.BeginTransaction();
-
-                    try
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
                     {
-                        insertKKCommand.Transaction = transaction;
-                        insertKKCommand.ExecuteNonQuery();
+                        string insertKKQuery = "INSERT INTO KartuKeluarga (Nomor_KK) VALUES (@NomorKK)";
+                        MySqlCommand insertKKCommand = new MySqlCommand(insertKKQuery, connection);
+                        insertKKCommand.Parameters.AddWithValue("@NomorKK", newKKNumber);
 
-                        insertAnggotaCommand.Transaction = transaction;
-                        insertAnggotaCommand.ExecuteNonQuery();
+                        connection.Open();
+                        MySqlTransaction transaction = connection.BeginTransaction();
 
-                        transaction.Commit();
-                        MessageBox.Show("Nomor KK dan NIK Kepala Keluarga berhasil ditambahkan.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (MySqlException ex)
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            insertKKCommand.Transaction = transaction;
+                            insertKKCommand.ExecuteNonQuery();
+
+                            // Collect data from the Data_Kepala_Keluarga form
+                            string namaKepalaKeluarga = dataKepalaKeluargaForm.NamaKepalaKeluarga;
+                            string alamat = dataKepalaKeluargaForm.Alamat;
+                            string kodePos = dataKepalaKeluargaForm.KodePos;
+                            string rt = dataKepalaKeluargaForm.Rt;
+                            string rw = dataKepalaKeluargaForm.Rw;
+                            string jumlahAnggotaKeluarga = dataKepalaKeluargaForm.JumlahAnggotaKeluarga;
+                            string telepon = dataKepalaKeluargaForm.Telepon;
+                            string email = dataKepalaKeluargaForm.EMail;
+
+                            // Insert additional data as needed
+
+                            transaction.Commit();
+                            MessageBox.Show("Nomor KK dan data Kepala Keluarga berhasil ditambahkan.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (MySqlException ex)
+                        {
+                            transaction.Rollback();
+                            MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -94,23 +102,6 @@ namespace WinFormsApp7
             string part2 = textBox2.Text.Trim();
             string part3 = textBox3.Text.Trim();
             string part4 = textBox4.Text.Trim();
-
-            if (part1.Length == 4 && part2.Length == 4 && part3.Length == 4 && part4.Length == 4)
-            {
-                return part1 + part2 + part3 + part4;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        private string GetNIK()
-        {
-            string part1 = textBoxNIK1.Text.Trim();
-            string part2 = textBoxNIK2.Text.Trim();
-            string part3 = textBoxNIK3.Text.Trim();
-            string part4 = textBoxNIK4.Text.Trim();
 
             if (part1.Length == 4 && part2.Length == 4 && part3.Length == 4 && part4.Length == 4)
             {
