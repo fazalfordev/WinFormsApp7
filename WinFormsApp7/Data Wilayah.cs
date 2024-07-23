@@ -105,6 +105,7 @@ namespace UAS
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@NIK", parentForm.NIKKepalaKeluarga);
+                    cmd.Parameters.AddWithValue("@NomorKK", parentForm.NomorKK);
                     cmd.Parameters.AddWithValue("@NamaKepalaKeluarga", parentForm.NamaKepalaKeluarga);
                     cmd.Parameters.AddWithValue("@Alamat", parentForm.Alamat);
                     cmd.Parameters.AddWithValue("@KodePos", parentForm.KodePos);
@@ -149,6 +150,7 @@ namespace UAS
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@NIK", parentForm.NIKKepalaKeluarga);
+                    cmd.Parameters.AddWithValue("@NomorKK", parentForm.NomorKK);
                     cmd.Parameters.AddWithValue("@NamaKepalaKeluarga", parentForm.NamaKepalaKeluarga);
                     cmd.Parameters.AddWithValue("@Alamat", parentForm.Alamat);
                     cmd.Parameters.AddWithValue("@KodePos", parentForm.KodePos);
