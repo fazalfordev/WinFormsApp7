@@ -100,7 +100,7 @@ namespace UAS
                         InsertKartuKeluarga(conn, transaction);
 
                         transaction.Commit();
-                        MessageBox.Show("Data WNI nonluar-negeri berhasil disimpan");
+                        MessageBox.Show("Data WNI luar negeri berhasil disimpan");
                     }
                     catch (Exception ex)
                     {
@@ -131,7 +131,7 @@ namespace UAS
                         InsertKartuKeluarga(conn, transaction);
 
                         transaction.Commit();
-                        MessageBox.Show("Data WNI luar negeri berhasil disimpan");
+                        MessageBox.Show("Data WNI nonluar-negeri berhasil disimpan");
                     }
                     catch (Exception ex)
                     {

@@ -15,7 +15,7 @@ namespace UAS
         public string NIKKepalaKeluarga => GetConcatenatedText(textBox1, textBox5, textBox6, textBox7);
         public string NomorKK => GetConcatenatedText(Nomor_KK, textBox2, textBox3, textBox4);
         public string NamaKepalaKeluarga => Nama_Kepala_Keluarga.Text;
-        public string Alamat => $"{Alamat1.Text} {Alamat2.Text}";
+        public string Alamat => Alamat1.Text;
         public string KodePos => Kode_Pos.Text;
         public string Rt => RT.Text;
         public string Rw => RW.Text;
@@ -25,7 +25,6 @@ namespace UAS
 
         private void Nama_Kepala_Keluarga_TextChanged(object sender, EventArgs e) { }
         private void Alamat1_TextChanged(object sender, EventArgs e) { }
-        private void Alamat2_TextChanged(object sender, EventArgs e) { }
         private void Kode_Pos_TextChanged(object sender, EventArgs e) { }
         private void RT_TextChanged(object sender, EventArgs e) { }
         private void RW_TextChanged(object sender, EventArgs e) { }

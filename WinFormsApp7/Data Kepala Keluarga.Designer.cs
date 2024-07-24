@@ -34,7 +34,6 @@
             Nama_Kepala_Keluarga = new TextBox();
             label3 = new Label();
             Alamat1 = new TextBox();
-            Alamat2 = new TextBox();
             label4 = new Label();
             Kode_Pos = new TextBox();
             label5 = new Label();
@@ -78,7 +77,6 @@
             groupBox1.Controls.Add(Nama_Kepala_Keluarga);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(Alamat1);
-            groupBox1.Controls.Add(Alamat2);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(Kode_Pos);
             groupBox1.Controls.Add(label5);
@@ -95,7 +93,7 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(665, 300);
+            groupBox1.Size = new Size(665, 261);
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             groupBox1.Text = "Informasi Kepala Keluarga";
@@ -204,7 +202,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(503, 250);
+            button1.Location = new Point(503, 217);
             button1.Name = "button1";
             button1.Size = new Size(85, 23);
             button1.TabIndex = 17;
@@ -235,9 +233,9 @@
             label3.AutoSize = true;
             label3.Location = new Point(18, 122);
             label3.Name = "label3";
-            label3.Size = new Size(45, 15);
+            label3.Size = new Size(33, 15);
             label3.TabIndex = 2;
-            label3.Text = "Alamat";
+            label3.Text = "Jalan";
             // 
             // Alamat1
             // 
@@ -248,19 +246,10 @@
             Alamat1.TabIndex = 9;
             Alamat1.TextChanged += Alamat1_TextChanged;
             // 
-            // Alamat2
-            // 
-            Alamat2.Location = new Point(210, 153);
-            Alamat2.Margin = new Padding(3, 2, 3, 2);
-            Alamat2.Name = "Alamat2";
-            Alamat2.Size = new Size(348, 23);
-            Alamat2.TabIndex = 10;
-            Alamat2.TextChanged += Alamat2_TextChanged;
-            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(18, 187);
+            label4.Location = new Point(18, 154);
             label4.Name = "label4";
             label4.Size = new Size(56, 15);
             label4.TabIndex = 6;
@@ -268,10 +257,11 @@
             // 
             // Kode_Pos
             // 
-            Kode_Pos.Location = new Point(210, 185);
+            Kode_Pos.Location = new Point(210, 152);
             Kode_Pos.Margin = new Padding(3, 2, 3, 2);
             Kode_Pos.MaxLength = 5;
             Kode_Pos.Name = "Kode_Pos";
+            Kode_Pos.ReadOnly = true;
             Kode_Pos.Size = new Size(70, 23);
             Kode_Pos.TabIndex = 11;
             Kode_Pos.Text = "16120";
@@ -280,7 +270,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(298, 187);
+            label5.Location = new Point(298, 154);
             label5.Name = "label5";
             label5.Size = new Size(19, 15);
             label5.TabIndex = 8;
@@ -288,10 +278,11 @@
             // 
             // RT
             // 
-            RT.Location = new Point(338, 185);
+            RT.Location = new Point(338, 152);
             RT.Margin = new Padding(3, 2, 3, 2);
             RT.MaxLength = 3;
             RT.Name = "RT";
+            RT.ReadOnly = true;
             RT.Size = new Size(42, 23);
             RT.TabIndex = 12;
             RT.Text = "001";
@@ -300,7 +291,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(395, 187);
+            label6.Location = new Point(395, 154);
             label6.Name = "label6";
             label6.Size = new Size(25, 15);
             label6.TabIndex = 10;
@@ -308,10 +299,11 @@
             // 
             // RW
             // 
-            RW.Location = new Point(440, 185);
+            RW.Location = new Point(440, 152);
             RW.Margin = new Padding(3, 2, 3, 2);
             RW.MaxLength = 3;
             RW.Name = "RW";
+            RW.ReadOnly = true;
             RW.Size = new Size(42, 23);
             RW.TabIndex = 13;
             RW.Text = "001";
@@ -320,7 +312,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(18, 219);
+            label7.Location = new Point(18, 186);
             label7.Name = "label7";
             label7.Size = new Size(143, 15);
             label7.TabIndex = 12;
@@ -328,7 +320,7 @@
             // 
             // Jumlah_Anggota_Keluarga
             // 
-            Jumlah_Anggota_Keluarga.Location = new Point(210, 216);
+            Jumlah_Anggota_Keluarga.Location = new Point(210, 183);
             Jumlah_Anggota_Keluarga.Margin = new Padding(3, 2, 3, 2);
             Jumlah_Anggota_Keluarga.MaxLength = 2;
             Jumlah_Anggota_Keluarga.Name = "Jumlah_Anggota_Keluarga";
@@ -339,7 +331,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(298, 219);
+            label8.Location = new Point(298, 186);
             label8.Name = "label8";
             label8.Size = new Size(48, 15);
             label8.TabIndex = 14;
@@ -347,8 +339,9 @@
             // 
             // telephone
             // 
-            telephone.Location = new Point(366, 216);
+            telephone.Location = new Point(366, 183);
             telephone.Margin = new Padding(3, 2, 3, 2);
+            telephone.MaxLength = 13;
             telephone.Name = "telephone";
             telephone.Size = new Size(116, 23);
             telephone.TabIndex = 15;
@@ -357,7 +350,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(18, 252);
+            label9.Location = new Point(18, 219);
             label9.Name = "label9";
             label9.Size = new Size(36, 15);
             label9.TabIndex = 16;
@@ -365,7 +358,7 @@
             // 
             // Email
             // 
-            Email.Location = new Point(210, 250);
+            Email.Location = new Point(210, 217);
             Email.Margin = new Padding(3, 2, 3, 2);
             Email.Name = "Email";
             Email.Size = new Size(272, 23);
@@ -376,7 +369,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(686, 353);
+            ClientSize = new Size(686, 313);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
@@ -397,7 +390,6 @@
         private TextBox Nama_Kepala_Keluarga;
         private Label label3;
         private TextBox Alamat1;
-        private TextBox Alamat2;
         private Label label4;
         private TextBox Kode_Pos;
         private Label label5;

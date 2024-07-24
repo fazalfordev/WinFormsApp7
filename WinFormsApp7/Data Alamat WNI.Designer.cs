@@ -203,6 +203,7 @@
             // 
             Kode_PosLN.Location = new Point(131, 124);
             Kode_PosLN.Margin = new Padding(3, 2, 3, 2);
+            Kode_PosLN.MaxLength = 5;
             Kode_PosLN.Name = "Kode_PosLN";
             Kode_PosLN.Size = new Size(182, 23);
             Kode_PosLN.TabIndex = 4;
@@ -221,6 +222,7 @@
             // 
             Jumlah_Anggota_KeluargaLN.Location = new Point(480, 130);
             Jumlah_Anggota_KeluargaLN.Margin = new Padding(3, 2, 3, 2);
+            Jumlah_Anggota_KeluargaLN.MaxLength = 2;
             Jumlah_Anggota_KeluargaLN.Name = "Jumlah_Anggota_KeluargaLN";
             Jumlah_Anggota_KeluargaLN.Size = new Size(168, 23);
             Jumlah_Anggota_KeluargaLN.TabIndex = 5;
@@ -239,6 +241,7 @@
             // 
             Kode_NegaraLN.Location = new Point(236, 230);
             Kode_NegaraLN.Margin = new Padding(3, 2, 3, 2);
+            Kode_NegaraLN.MaxLength = 2;
             Kode_NegaraLN.Name = "Kode_NegaraLN";
             Kode_NegaraLN.Size = new Size(50, 23);
             Kode_NegaraLN.TabIndex = 8;
@@ -257,6 +260,7 @@
             // 
             Kode_Perwakilan_RILN.Location = new Point(236, 264);
             Kode_Perwakilan_RILN.Margin = new Padding(3, 2, 3, 2);
+            Kode_Perwakilan_RILN.MaxLength = 2;
             Kode_Perwakilan_RILN.Name = "Kode_Perwakilan_RILN";
             Kode_Perwakilan_RILN.Size = new Size(50, 23);
             Kode_Perwakilan_RILN.TabIndex = 10;
@@ -275,6 +279,7 @@
             // 
             TeleponLN.Location = new Point(163, 165);
             TeleponLN.Margin = new Padding(3, 2, 3, 2);
+            TeleponLN.MaxLength = 13;
             TeleponLN.Name = "TeleponLN";
             TeleponLN.Size = new Size(485, 23);
             TeleponLN.TabIndex = 6;
