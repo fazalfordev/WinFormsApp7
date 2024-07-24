@@ -65,7 +65,7 @@ namespace UAS
         private void AssignEventHandlers()
         {
             // Assigning TextChanged and KeyPress event handlers
-            foreach (var tb in new[] { Nomor_KK, textBox2, textBox3, textBox4, textBox8, textBox9, textBox10, textBox1, textBox5, textBox6, textBox7, textBox11, textBox12, textBox13})
+            foreach (var tb in new[] { Nomor_KK, textBox2, textBox3, textBox4, textBox8, textBox9, textBox10, textBox1, textBox5, textBox6, textBox7, textBox11, textBox12, textBox13 })
             {
                 if (tb == textBox10 || tb == textBox13)
                 {
@@ -116,6 +116,14 @@ namespace UAS
         private void textBox13_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            using (Data_Wilayah data_Wilayah = new Data_Wilayah(this))
+            {
+                data_Wilayah.ShowDialog();
+            }
         }
     }
 }

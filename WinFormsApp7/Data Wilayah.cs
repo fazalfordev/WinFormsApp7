@@ -203,5 +203,24 @@ namespace UAS
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                using (dataAlamatWNI = new Data_Alamat_WNI())
+                {
+                    dataAlamatWNI.ShowDialog();
+                }
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked && dataAlamatWNI != null)
+                SaveDataWithAlamatWNI();
+            else
+                SaveDataWithoutAlamatWNI();
+        }
     }
 }

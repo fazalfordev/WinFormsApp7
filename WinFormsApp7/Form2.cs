@@ -335,208 +335,194 @@ namespace WinFormsApp7
             {
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
 
+                string FormatDate(object date)
+                {
+                    if (date is DateTime dateTime)
+                        return dateTime.ToString("dd-MM-yyyy");
+                    else if (DateTime.TryParse(date?.ToString(), out dateTime))
+                        return dateTime.ToString("dd-MM-yyyy");
+                    return " ";
+                }
+
+                // Helper function to safely get cell value and format it
+                string SafeGetCellValue(DataGridViewRow row, string columnName)
+                {
+                    var cell = row.Cells[columnName];
+                    return cell?.Value?.ToString().ToUpper() ?? " ";
+                }
+
+                // Helper function to ensure three digits
+                string EnsureThreeDigits(string input)
+                {
+                    return input.PadLeft(3, '0');
+                }
+
+                // Helper function to ensure two digits
+                string EnsureTwoDigits(string input)
+                {
+                    return input.PadLeft(2, '0');
+                }
+               
+
+                worksheet.Cells[$"S{14}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "nama_kepala_keluarga");
+                worksheet.Cells[$"S{16}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "alamat");
+
+                // RT split
+                string rt = SafeGetCellValue(dataGridView1.Rows[0], "rt");
+                rt = EnsureThreeDigits(rt);
+                if (rt.Length >= 3)
+                {
+                    worksheet.Cells[$"AB{20}"].Value = rt[0].ToString();
+                    worksheet.Cells[$"AC{20}"].Value = rt[1].ToString();
+                    worksheet.Cells[$"AD{20}"].Value = rt[2].ToString();
+                }
+
+                // RW split
+                string rw = SafeGetCellValue(dataGridView1.Rows[0], "rw");
+                rw = EnsureThreeDigits(rw);
+                if (rw.Length >= 3)
+                {
+                    worksheet.Cells[$"AI{20}"].Value = rw[0].ToString();
+                    worksheet.Cells[$"AJ{20}"].Value = rw[1].ToString();
+                    worksheet.Cells[$"AK{20}"].Value = rw[2].ToString();
+                }
+
+                string jumlahAnggotaKeluarga = SafeGetCellValue(dataGridView1.Rows[0], "jumlah_Anggota_Keluarga");
+                jumlahAnggotaKeluarga = EnsureThreeDigits(jumlahAnggotaKeluarga);
+                if (jumlahAnggotaKeluarga.Length >= 3)
+                {
+                    worksheet.Cells[$"AX{20}"].Value = jumlahAnggotaKeluarga[0].ToString();
+                    worksheet.Cells[$"AY{20}"].Value = jumlahAnggotaKeluarga[1].ToString();
+                    worksheet.Cells[$"AZ{20}"].Value = jumlahAnggotaKeluarga[2].ToString();
+                }
+
+                // Telepon
+                worksheet.Cells[$"S{22}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "telepon");
+
+                // Email
+                worksheet.Cells[$"S{24}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "email");
+
+                // Kode Desa split
+                string kodeDesa = SafeGetCellValue(dataGridView1.Rows[0], "kode_desa");
+                kodeDesa = EnsureTwoDigits(kodeDesa);
+                if (kodeDesa.Length >= 2)
+                {
+                    worksheet.Cells[$"S{33}"].Value = kodeDesa[0].ToString();
+                    worksheet.Cells[$"T{33}"].Value = kodeDesa[1].ToString();
+                }
+
+                // Nama Dusun
+                worksheet.Cells[$"S{35}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "nama_dusun");
+
+                // Alamat Luar Negeri
+                worksheet.Cells[$"N{37}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "alamat_luar_negeri");
+
+                // Kota Luar Negeri
+                worksheet.Cells[$"N{39}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "kota_luar_negeri");
+
+                // Provinsi Negara Bagian Luar Negeri
+                worksheet.Cells[$"AL{39}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "provinsi_negara_bagian_luar_negeri");
+
+                // Negara
+                worksheet.Cells[$"N{41}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "negara_luar_negeri");
+
+                // Kode Pos Luar Negeri
+                worksheet.Cells[$"N{43}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "kode_pos_luar_negeri");
+
+                string jumlahAnggotaKeluargaLN = SafeGetCellValue(dataGridView1.Rows[0], "jumlah_Anggota_Keluarga_Luar_Negeri");
+                jumlahAnggotaKeluargaLN = EnsureTwoDigits(jumlahAnggotaKeluargaLN);
+                if (jumlahAnggotaKeluargaLN.Length >= 2)
+                {
+                    worksheet.Cells[$"AM{43}"].Value = jumlahAnggotaKeluargaLN[0].ToString();
+                    worksheet.Cells[$"AN{43}"].Value = jumlahAnggotaKeluargaLN[1].ToString();
+                }
+
+                string teleponLuarNegeri = SafeGetCellValue(dataGridView1.Rows[0], "telepon_luar_negeri");
+
+                // Store each character in the corresponding cell starting from N45 onwards
+                for (int a = 0; a < teleponLuarNegeri.Length; a++)
+                {
+                    // Calculate the target cell column based on the current index
+                    int targetColumn = 78 + a; // 78 is ASCII for 'N'
+                    if (targetColumn > 90) break; // Stop if it goes past 'Z'
+
+                    worksheet.Cells[$"{(char)targetColumn}45"].Value = teleponLuarNegeri[a].ToString();
+                }
+
+                worksheet.Cells[$"N{47}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "email_luar_negeri");
+
+                string kodenegara = SafeGetCellValue(dataGridView1.Rows[0], "kode_negara");
+                kodenegara = EnsureThreeDigits(kodenegara);
+                if (kodenegara.Length >= 3)
+                {
+                    worksheet.Cells[$"N{49}"].Value = kodenegara[0].ToString();
+                    worksheet.Cells[$"O{49}"].Value = kodenegara[1].ToString();
+                    worksheet.Cells[$"P{49}"].Value = kodenegara[2].ToString();
+                }
+
+                worksheet.Cells[$"S{49}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "nama_negara");
+
+                string kodeperwakilan = SafeGetCellValue(dataGridView1.Rows[0], "kode_perwakilan_ri");
+                kodeperwakilan = EnsureTwoDigits(kodeperwakilan);
+                if (kodeperwakilan.Length >= 2)
+                {
+                    worksheet.Cells[$"N{51}"].Value = kodeperwakilan[0].ToString();
+                    worksheet.Cells[$"O{51}"].Value = kodeperwakilan[1].ToString();
+                }
+
+                worksheet.Cells[$"S{51}"].Value = SafeGetCellValue(dataGridView1.Rows[0], "nama_perwakilan_ri");
+
                 for (int i = 0; i < dataGridView1.Rows.Count && i < 10; i++)
                 {
                     var row = dataGridView1.Rows[i];
                     if (row == null) continue; // Skip null rows
 
-                    // Helper function to safely get cell value and format it
-                    string SafeGetCellValue(string columnName)
-                    {
-                        var cell = row.Cells[columnName];
-                        return cell?.Value?.ToString().ToUpper() ?? " ";
-                    }
 
-                    // Helper function to format date
-                    string FormatDate(object date)
-                    {
-                        if (date is DateTime dateTime)
-                            return dateTime.ToString("dd-MM-yyyy");
-                        else if (DateTime.TryParse(date?.ToString(), out dateTime))
-                            return dateTime.ToString("dd-MM-yyyy");
-                        return " ";
-                    }
+                    
 
-                    worksheet.Cells[$"B{64 + i}"].Value = dataGridView1.Rows[i].Cells["Nama_Lengkap"].Value?.ToString();
-                    worksheet.Cells[$"S{64 + i}"].Value = dataGridView1.Rows[i].Cells["Gelar_Depan"].Value?.ToString();
-                    worksheet.Cells[$"W{64 + i}"].Value = dataGridView1.Rows[i].Cells["Gelar_Belakang"].Value?.ToString();
-                    worksheet.Cells[$"AA{64 + i}"].Value = dataGridView1.Rows[i].Cells["Passport_Number"].Value?.ToString();
+                    worksheet.Cells[$"B{64 + i}"].Value = SafeGetCellValue(row, "Nama_Lengkap");
+                    worksheet.Cells[$"S{64 + i}"].Value = SafeGetCellValue(row, "Gelar_Depan");
+                    worksheet.Cells[$"W{64 + i}"].Value = SafeGetCellValue(row, "Gelar_Belakang");
+                    worksheet.Cells[$"AA{64 + i}"].Value = SafeGetCellValue(row, "Passport_Number");
                     worksheet.Cells[$"AH{64 + i}"].Value = FormatDate(row.Cells["Tgl_Berakhir_Paspor"].Value);
-                    worksheet.Cells[$"AP{64 + i}"].Value = dataGridView1.Rows[i].Cells["Nama_Sponsor"].Value?.ToString();
-                    worksheet.Cells[$"B{78 + i}"].Value = dataGridView1.Rows[i].Cells["Tipe_Sponsor"].Value?.ToString();
-                    worksheet.Cells[$"G{78 + i}"].Value = dataGridView1.Rows[i].Cells["Alamat_Sponsor"].Value?.ToString();
-                    worksheet.Cells[$"O{78 + i}"].Value = dataGridView1.Rows[i].Cells["Jenis_Kelamin"].Value?.ToString();
-                    worksheet.Cells[$"U{78 + i}"].Value = dataGridView1.Rows[i].Cells["Tempat_Lahir"].Value?.ToString();
+                    worksheet.Cells[$"AP{64 + i}"].Value = SafeGetCellValue(row, "Nama_Sponsor");
+                    worksheet.Cells[$"B{78 + i}"].Value = SafeGetCellValue(row, "Tipe_Sponsor");
+                    worksheet.Cells[$"G{78 + i}"].Value = SafeGetCellValue(row, "Alamat_Sponsor");
+                    worksheet.Cells[$"O{78 + i}"].Value = SafeGetCellValue(row, "Jenis_Kelamin");
+                    worksheet.Cells[$"U{78 + i}"].Value = SafeGetCellValue(row, "Tempat_Lahir");
                     worksheet.Cells[$"AB{78 + i}"].Value = FormatDate(row.Cells["Tanggal_Lahir"].Value);
-                    worksheet.Cells[$"AK{78 + i}"].Value = dataGridView1.Rows[i].Cells["Kewarganegaraan"].Value?.ToString();
-                    worksheet.Cells[$"AR{78 + i}"].Value = dataGridView1.Rows[i].Cells["No_SK_Penetapan_WNI"].Value?.ToString();
-                    //worksheet.Cells[$"AY{78 + i}"].Value = dataGridView1.Rows[i].Cells["Akta_Lahir"].Value?.ToString();
-                    worksheet.Cells[$"B{98 + i}"].Value = dataGridView1.Rows[i].Cells["Nomor_Akta_Kelahiran"].Value?.ToString();
-                    worksheet.Cells[$"I{98 + i}"].Value = dataGridView1.Rows[i].Cells["Golongan_Darah"].Value?.ToString();
-                    worksheet.Cells[$"M{98 + i}"].Value = dataGridView1.Rows[i].Cells["Agama"].Value?.ToString();
-                    worksheet.Cells[$"Q{98 + i}"].Value = dataGridView1.Rows[i].Cells["Nama_Organisasi_Kepercayaan"].Value?.ToString();
-                    worksheet.Cells[$"AD{98 + i}"].Value = dataGridView1.Rows[i].Cells["Status_Perkawinan"].Value?.ToString();
-                    worksheet.Cells[$"AK{98 + i}"].Value = dataGridView1.Rows[i].Cells["Akta_Perkawinan"].Value?.ToString();
-                    worksheet.Cells[$"AP{98 + i}"].Value = dataGridView1.Rows[i].Cells["Nomor_Akta_Perkawinan"].Value?.ToString();
+                    worksheet.Cells[$"AK{78 + i}"].Value = SafeGetCellValue(row, "Kewarganegaraan");
+                    worksheet.Cells[$"AR{78 + i}"].Value = SafeGetCellValue(row, "No_SK_Penetapan_WNI");
+                    worksheet.Cells[$"B{98 + i}"].Value = SafeGetCellValue(row, "Nomor_Akta_Kelahiran");
+                    worksheet.Cells[$"I{98 + i}"].Value = SafeGetCellValue(row, "Golongan_Darah");
+                    worksheet.Cells[$"M{98 + i}"].Value = SafeGetCellValue(row, "Agama");
+                    worksheet.Cells[$"Q{98 + i}"].Value = SafeGetCellValue(row, "Nama_Organisasi_Kepercayaan");
+                    worksheet.Cells[$"AD{98 + i}"].Value = SafeGetCellValue(row, "Status_Perkawinan");
+                    //worksheet.Cells[$"AK{98 + i}"].Value = SafeGetCellValue(row, "Akta_Perkawinan");
+                    worksheet.Cells[$"AP{98 + i}"].Value = SafeGetCellValue(row, "Nomor_Akta_Perkawinan");
                     worksheet.Cells[$"AY{98 + i}"].Value = FormatDate(row.Cells["Tanggal_Perkawinan"].Value);
-                    worksheet.Cells[$"B{112 + i}"].Value = dataGridView1.Rows[i].Cells["Akta_Cerai"].Value?.ToString();
-                    worksheet.Cells[$"E{112 + i}"].Value = dataGridView1.Rows[i].Cells["Nomor_Akta_Cerai"].Value?.ToString();
+                    //worksheet.Cells[$"B{112 + i}"].Value = SafeGetCellValue(row, "Akta_Cerai");
+                    worksheet.Cells[$"E{112 + i}"].Value = SafeGetCellValue(row, "Nomor_Akta_Cerai");
                     worksheet.Cells[$"J{112 + i}"].Value = FormatDate(row.Cells["Tanggal_Perceraian"].Value);
-                    worksheet.Cells[$"M{112 + i}"].Value = dataGridView1.Rows[i].Cells["Status_Hubungan_Dalam_Keluarga"].Value?.ToString();
-                    worksheet.Cells[$"T{112 + i}"].Value = dataGridView1.Rows[i].Cells["Kelainan_Fisik_dan_Mental"].Value?.ToString();
-                    worksheet.Cells[$"AA{112 + i}"].Value = dataGridView1.Rows[i].Cells["Penyandang_Cacat"].Value?.ToString();
-                    worksheet.Cells[$"AF{112 + i}"].Value = dataGridView1.Rows[i].Cells["Pendidikan_Terakhir"].Value?.ToString();
-                    worksheet.Cells[$"AK{112 + i}"].Value = dataGridView1.Rows[i].Cells["Jenis_Pekerjaan"].Value?.ToString();
-                    worksheet.Cells[$"AO{112 + i}"].Value = dataGridView1.Rows[i].Cells["Nomor_ITAS_ITAP"].Value?.ToString();
+                    worksheet.Cells[$"M{112 + i}"].Value = SafeGetCellValue(row, "Status_Hubungan_Dalam_Keluarga");
+                    worksheet.Cells[$"T{112 + i}"].Value = SafeGetCellValue(row, "Kelainan_Fisik_dan_Mental");
+                    worksheet.Cells[$"AA{112 + i}"].Value = SafeGetCellValue(row, "Penyandang_Cacat");
+                    worksheet.Cells[$"AF{112 + i}"].Value = SafeGetCellValue(row, "Pendidikan_Terakhir");
+                    worksheet.Cells[$"AK{112 + i}"].Value = SafeGetCellValue(row, "Jenis_Pekerjaan");
+                    worksheet.Cells[$"AO{112 + i}"].Value = SafeGetCellValue(row, "Nomor_ITAS_ITAP");
                     worksheet.Cells[$"AV{112 + i}"].Value = FormatDate(row.Cells["Tanggal_Terbit_ITAS_ITAP"].Value);
                     worksheet.Cells[$"B{126 + i}"].Value = FormatDate(row.Cells["Tanggal_Terbit_ITAS_ITAP"].Value);
                     worksheet.Cells[$"G{126 + i}"].Value = FormatDate(row.Cells["Tanggal_Akhir_ITAS_ITAP"].Value);
-                    worksheet.Cells[$"K{126 + i}"].Value = dataGridView1.Rows[i].Cells["Tempat_Datang_Pertama"].Value?.ToString();
+                    worksheet.Cells[$"K{126 + i}"].Value = SafeGetCellValue(row, "Tempat_Datang_Pertama");
                     worksheet.Cells[$"S{126 + i}"].Value = FormatDate(row.Cells["Tanggal_Kedatangan_Pertama"].Value);
-                    worksheet.Cells[$"Z{126 + i}"].Value = dataGridView1.Rows[i].Cells["NIK_Ibu"].Value?.ToString();
-                    worksheet.Cells[$"AG{126 + i}"].Value = dataGridView1.Rows[i].Cells["Nama_Ibu"].Value?.ToString();
-                    worksheet.Cells[$"AO{126 + i}"].Value = dataGridView1.Rows[i].Cells["NIK_Ayah"].Value?.ToString();
-                    worksheet.Cells[$"AU{126 + i}"].Value = dataGridView1.Rows[i].Cells["Nama_Ayah"].Value?.ToString();
+                    worksheet.Cells[$"Z{126 + i}"].Value = SafeGetCellValue(row, "NIK_Ibu");
+                    worksheet.Cells[$"AG{126 + i}"].Value = SafeGetCellValue(row, "Nama_Ibu");
+                    worksheet.Cells[$"AO{126 + i}"].Value = SafeGetCellValue(row, "NIK_Ayah");
+                    worksheet.Cells[$"AU{126 + i}"].Value = SafeGetCellValue(row, "Nama_Ayah");
 
                     // New fields
                     // Alamat
-                    worksheet.Cells[$"S{14 + i}"].Value = SafeGetCellValue("nama_kepala_keluarga");
-
-                    worksheet.Cells[$"S{16 + i}"].Value = SafeGetCellValue("alamat");
-
-                    // RT split
-                    // Helper function to ensure string has 3 digits
-                    string EnsureThreeDigits(string input)
-                    {
-                        return input.PadLeft(3, '0');
-                    }
-
-                    string EnsureTwoDigits(string input)
-                    {
-                        return input.PadLeft(2, '0');
-                    }
-
-                    // RT split
-                    string rt = SafeGetCellValue("rt");
-                    rt = EnsureThreeDigits(rt);
-                    if (rt.Length >= 3)
-                    {
-                        worksheet.Cells[$"AB{20}"].Value = rt[0].ToString();
-                        worksheet.Cells[$"AC{20}"].Value = rt[1].ToString();
-                        worksheet.Cells[$"AD{20}"].Value = rt[2].ToString();
-                    }
-
-                    // RW split
-                    string rw = SafeGetCellValue("rw");
-                    rw = EnsureThreeDigits(rw);
-                    if (rw.Length >= 3)
-                    {
-                        worksheet.Cells[$"AI{20}"].Value = rw[0].ToString();
-                        worksheet.Cells[$"AJ{20}"].Value = rw[1].ToString();
-                        worksheet.Cells[$"AK{20}"].Value = rw[2].ToString();
-                    }
-
-                    string jumlahAnggotaKeluarga = SafeGetCellValue("jumlah_Anggota_Keluarga");
-                    jumlahAnggotaKeluarga = EnsureThreeDigits(jumlahAnggotaKeluarga);
-                    if (rw.Length >= 3)
-                    {
-                        worksheet.Cells[$"AX{20}"].Value = jumlahAnggotaKeluarga[0].ToString();
-                        worksheet.Cells[$"AY{20}"].Value = jumlahAnggotaKeluarga[1].ToString();
-                        worksheet.Cells[$"AZ{20}"].Value = jumlahAnggotaKeluarga[2].ToString();
-                    }
-
-                    // Telepon
-                    worksheet.Cells[$"S{22 + i}"].Value = SafeGetCellValue("telepon");
-
-                    // Email
-                    worksheet.Cells[$"S{24}"].Value = SafeGetCellValue("email");
-
-                    //worksheet.Cells[$"S{24 + i}"].Value = SafeGetCellValue("email");
-
-                    // Kode Desa split
-                    string kodeDesa = SafeGetCellValue("kode_desa");
-                    kodeDesa = EnsureTwoDigits(kodeDesa);
-                    if (kodeDesa.Length >= 2)
-                    {
-                        worksheet.Cells[$"S{33}"].Value = kodeDesa[0].ToString();
-                        worksheet.Cells[$"T{33}"].Value = kodeDesa[1].ToString();
-                    }
-
-                    // Nama Dusun
-                    worksheet.Cells[$"S{35}"].Value = SafeGetCellValue("nama_dusun");
-
-
-                    // Alamat Luar Negeri
-                    worksheet.Cells[$"N{37}"].Value = SafeGetCellValue("alamat_luar_negeri");
-
-                    // Kota Luar Negeri
-                    worksheet.Cells[$"N{39}"].Value = SafeGetCellValue("kota_luar_negeri");
-
-                    // Provinsi Negara Bagian Luar Negeri
-                    worksheet.Cells[$"AL{39}"].Value = SafeGetCellValue("provinsi_negara_bagian_luar_negeri");
-
-                    // Negara
-                    worksheet.Cells[$"N{41}"].Value = SafeGetCellValue("negara_luar_negeri");
-
-                    // Kode Pos
-                    worksheet.Cells[$"N{43}"].Value = SafeGetCellValue("kode_pos_luar_negeri");
-
-                    string jumlahAnggotaKeluargaLN = SafeGetCellValue("jumlah_Anggota_Keluarga_Luar_Negeri");
-                    jumlahAnggotaKeluargaLN = EnsureTwoDigits(jumlahAnggotaKeluargaLN);
-                    if (rw.Length >= 2)
-                    {
-                        worksheet.Cells[$"AM{43}"].Value = jumlahAnggotaKeluargaLN[0].ToString();
-                        worksheet.Cells[$"AN{43}"].Value = jumlahAnggotaKeluargaLN[1].ToString();
-                    }
-                    //string teleponLuarNegeri = SafeGetCellValue("telepon_luar_negeri");
-
-                    // Reverse the string to place digits from Z45 backwards
-                    //char[] reversedTelepon = teleponLuarNegeri.ToCharArray();
-                    //Array.Reverse(reversedTelepon);
-
-                    //for (int a = 0; a < reversedTelepon.Length; a++)
-                    // {
-                    //     // Calculate the target cell column based on the current index
-                    //     int targetColumn = 90 - a; // 90 is ASCII for 'Z'
-                    //     if (targetColumn < 78) break; // Stop if it goes past 'N'
-                    //
-                    //     worksheet.Cells[$"{(char)targetColumn}45"].Value = reversedTelepon[a].ToString();
-                    // }
-
-                    string teleponLuarNegeri = SafeGetCellValue("telepon_luar_negeri");
-
-                    // Store each character in the corresponding cell starting from N45 onwards
-                    for (int a = 0; a < teleponLuarNegeri.Length; a++)
-                    {
-                        // Calculate the target cell column based on the current index
-                        int targetColumn = 78 + a; // 78 is ASCII for 'N'
-                        if (targetColumn > 90) break; // Stop if it goes past 'Z'
-
-                        worksheet.Cells[$"{(char)targetColumn}45"].Value = teleponLuarNegeri[a].ToString();
-                    }
-
-                    worksheet.Cells[$"N{47}"].Value = SafeGetCellValue("email_luar_negeri");
-
-                    string kodenegara = SafeGetCellValue("kode_negara");
-                    kodenegara = EnsureThreeDigits(kodenegara);
-                    if (rw.Length >= 3)
-                    {
-                        worksheet.Cells[$"N{49}"].Value = kodenegara[0].ToString();
-                        worksheet.Cells[$"O{49}"].Value = kodenegara[1].ToString();
-                        worksheet.Cells[$"P{49}"].Value = kodenegara[2].ToString();
-                    }
-
-                    worksheet.Cells[$"S{49}"].Value = SafeGetCellValue("nama_negara");
-
-                    string kodeperwakilan = SafeGetCellValue("kode_perwakilan_ri");
-                    kodeperwakilan = EnsureTwoDigits(kodeperwakilan);
-                    if (kodeperwakilan.Length >= 2)
-                    {
-                        worksheet.Cells[$"N{51}"].Value = kodeperwakilan[0].ToString();
-                        worksheet.Cells[$"O{51}"].Value = kodeperwakilan[1].ToString();
-                    }
-
-                    worksheet.Cells[$"S{51}"].Value = SafeGetCellValue("nama_perwakilan_ri");
+                    
 
                 }
 
@@ -545,6 +531,7 @@ namespace WinFormsApp7
 
             return newFilePath;
         }
+
 
         private void ConvertExcelToPdf(string excelFilePath, string pdfFilePath)
         {

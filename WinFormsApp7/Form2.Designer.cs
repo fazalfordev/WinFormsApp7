@@ -38,20 +38,24 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = Color.LightSteelBlue;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(14, 14);
-            dataGridView1.Margin = new Padding(4, 3, 4, 3);
+            dataGridView1.GridColor = SystemColors.ActiveCaption;
+            dataGridView1.Location = new Point(192, 105);
+            dataGridView1.Margin = new Padding(6, 5, 6, 5);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(905, 427);
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1293, 712);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // deleteRowButton
             // 
-            deleteRowButton.Location = new Point(14, 448);
-            deleteRowButton.Margin = new Padding(4, 3, 4, 3);
+            deleteRowButton.BackgroundImage = Properties.Resources.Cuplikan_layar_2024_07_24_133814;
+            deleteRowButton.Location = new Point(379, 859);
+            deleteRowButton.Margin = new Padding(6, 5, 6, 5);
             deleteRowButton.Name = "deleteRowButton";
-            deleteRowButton.Size = new Size(88, 27);
+            deleteRowButton.Size = new Size(126, 45);
             deleteRowButton.TabIndex = 1;
             deleteRowButton.Text = "Hapus Baris";
             deleteRowButton.UseVisualStyleBackColor = true;
@@ -59,10 +63,11 @@
             // 
             // saveButton
             // 
-            saveButton.Location = new Point(108, 448);
-            saveButton.Margin = new Padding(4, 3, 4, 3);
+            saveButton.BackgroundImage = Properties.Resources.Cuplikan_layar_2024_07_24_133814;
+            saveButton.Location = new Point(517, 859);
+            saveButton.Margin = new Padding(6, 5, 6, 5);
             saveButton.Name = "saveButton";
-            saveButton.Size = new Size(88, 27);
+            saveButton.Size = new Size(126, 45);
             saveButton.TabIndex = 2;
             saveButton.Text = "Simpan Perubahan";
             saveButton.UseVisualStyleBackColor = true;
@@ -70,10 +75,11 @@
             // 
             // printButton
             // 
-            printButton.Location = new Point(203, 448);
-            printButton.Margin = new Padding(4, 3, 4, 3);
+            printButton.BackgroundImage = Properties.Resources.Cuplikan_layar_2024_07_24_133814;
+            printButton.Location = new Point(655, 859);
+            printButton.Margin = new Padding(6, 5, 6, 5);
             printButton.Name = "printButton";
-            printButton.Size = new Size(88, 27);
+            printButton.Size = new Size(126, 45);
             printButton.TabIndex = 3;
             printButton.Text = "Print";
             printButton.UseVisualStyleBackColor = true;
@@ -81,10 +87,12 @@
             // 
             // tambahBarisButton
             // 
-            tambahBarisButton.Location = new Point(299, 448);
-            tambahBarisButton.Margin = new Padding(4, 3, 4, 3);
+            tambahBarisButton.BackgroundImage = Properties.Resources.Cuplikan_layar_2024_07_24_133814;
+            tambahBarisButton.BackgroundImageLayout = ImageLayout.Stretch;
+            tambahBarisButton.Location = new Point(192, 859);
+            tambahBarisButton.Margin = new Padding(6, 5, 6, 5);
             tambahBarisButton.Name = "tambahBarisButton";
-            tambahBarisButton.Size = new Size(120, 27);
+            tambahBarisButton.Size = new Size(171, 45);
             tambahBarisButton.TabIndex = 4;
             tambahBarisButton.Text = "Tambah Baris";
             tambahBarisButton.UseVisualStyleBackColor = true;
@@ -92,15 +100,18 @@
             // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 519);
+            BackColor = Color.SteelBlue;
+            BackgroundImage = Properties.Resources.Descargar_Fondo_de_diseño_hexagonal_azul_claro_geométrico_abstracto__gratis;
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(1714, 949);
             Controls.Add(tambahBarisButton);
             Controls.Add(printButton);
             Controls.Add(saveButton);
             Controls.Add(deleteRowButton);
             Controls.Add(dataGridView1);
-            Margin = new Padding(4, 3, 4, 3);
+            Margin = new Padding(6, 5, 6, 5);
             Name = "Form2";
             Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
