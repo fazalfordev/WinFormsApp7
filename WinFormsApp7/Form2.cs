@@ -29,6 +29,28 @@ namespace WinFormsApp7
             dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
         }
 
+        private void Numeric_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb != null && tb.Text.Length > 16)
+            {
+                tb.Text = tb.Text.Substring(0, 16); // Trim the text to 16 characters if it exceeds the limit
+                tb.SelectionStart = tb.Text.Length; // Set the cursor to the end of the text
+            }
+        }
+
+        private void Numeric_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true; // Suppress the key press if it's not a digit or control key
+
+            if (tb != null && tb.Text.Length >= 16 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the key press if the length exceeds 16 characters
+            }
+        }
+
         private void LoadData()
         {
             try
@@ -45,6 +67,88 @@ namespace WinFormsApp7
                 dataAdapter.Fill(dataTable);
                 dataGridView1.DataSource = dataTable;
 
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                DataGridViewComboBoxColumn comboBoxColumn = new DataGridViewComboBoxColumn
+                {
+                    Name = "Jenis_Kelamin",
+                    HeaderText = "Jenis Kelamin",
+                    DataPropertyName = "Jenis_Kelamin",
+                    DataSource = new string[] { "Laki-laki", "Perempuan" }
+                };
+                int genderColumnIndex = dataGridView1.Columns["Jenis_Kelamin"].Index;
+                dataGridView1.Columns.RemoveAt(genderColumnIndex);
+                dataGridView1.Columns.Insert(genderColumnIndex, comboBoxColumn);
+
+                DataGridViewCalendarColumn birthdate = new DataGridViewCalendarColumn
+                {
+                    Name = "Tanggal_Lahir",
+                    HeaderText = "Tanggal Lahir",
+                    DataPropertyName = "Tanggal_Lahir"
+                };
+                int birthdateColumnIndex = dataGridView1.Columns["Tanggal_Lahir"].Index;
+                dataGridView1.Columns.RemoveAt(birthdateColumnIndex);
+                dataGridView1.Columns.Insert(birthdateColumnIndex, birthdate);
+
+                DataGridViewCalendarColumn paspor = new DataGridViewCalendarColumn
+                {
+                    Name = "Tgl_Berakhir_Paspor",
+                    HeaderText = "Tgl_Berakhir_Paspor",
+                    DataPropertyName = "Tgl_Berakhir_Paspor"
+                };
+                int pasporColumnIndex = dataGridView1.Columns["Tgl_Berakhir_Paspor"].Index;
+                dataGridView1.Columns.RemoveAt(pasporColumnIndex);
+                dataGridView1.Columns.Insert(pasporColumnIndex, paspor);
+
+                DataGridViewCalendarColumn kawin = new DataGridViewCalendarColumn
+                {
+                    Name = "Tanggal_Perkawinan",
+                    HeaderText = "Tanggal_Perkawinan",
+                    DataPropertyName = "Tanggal_Perkawinan"
+                };
+                int kawinColumnIndex = dataGridView1.Columns["Tanggal_Perkawinan"].Index;
+                dataGridView1.Columns.RemoveAt(kawinColumnIndex);
+                dataGridView1.Columns.Insert(kawinColumnIndex, kawin);
+
+                DataGridViewCalendarColumn cerai = new DataGridViewCalendarColumn
+                {
+                    Name = "Tanggal_Perceraian",
+                    HeaderText = "Tanggal_Perceraian",
+                    DataPropertyName = "Tanggal_Perceraian"
+                };
+                int ceraiColumnIndex = dataGridView1.Columns["Tanggal_Perceraian"].Index;
+                dataGridView1.Columns.RemoveAt(ceraiColumnIndex);
+                dataGridView1.Columns.Insert(ceraiColumnIndex, cerai);
+
+                DataGridViewCalendarColumn terbitItasItap = new DataGridViewCalendarColumn
+                {
+                    Name = "Tanggal_Terbit_ITAS_ITAP",
+                    HeaderText = "Tanggal_Terbit_ITAS_ITAP",
+                    DataPropertyName = "Tanggal_Terbit_ITAS_ITAP"
+                };
+                int terbitItasItapColumnIndex = dataGridView1.Columns["Tanggal_Terbit_ITAS_ITAP"].Index;
+                dataGridView1.Columns.RemoveAt(terbitItasItapColumnIndex);
+                dataGridView1.Columns.Insert(terbitItasItapColumnIndex, terbitItasItap);
+
+                DataGridViewCalendarColumn akhirItasItap = new DataGridViewCalendarColumn
+                {
+                    Name = "Tanggal_Akhir_ITAS_ITAP",
+                    HeaderText = "Tanggal_Akhir_ITAS_ITAP",
+                    DataPropertyName = "Tanggal_Akhir_ITAS_ITAP"
+                };
+                int akhirItasItapColumnIndex = dataGridView1.Columns["Tanggal_Akhir_ITAS_ITAP"].Index;
+                dataGridView1.Columns.RemoveAt(akhirItasItapColumnIndex);
+                dataGridView1.Columns.Insert(akhirItasItapColumnIndex, akhirItasItap);
+
+                DataGridViewCalendarColumn datang = new DataGridViewCalendarColumn
+                {
+                    Name = "Tanggal_Kedatangan_Pertama",
+                    HeaderText = "Tanggal_Kedatangan_Pertama",
+                    DataPropertyName = "Tanggal_Kedatangan_Pertama"
+                };
+                int datangColumnIndex = dataGridView1.Columns["Tanggal_Kedatangan_Pertama"].Index;
+                dataGridView1.Columns.RemoveAt(datangColumnIndex);
+                dataGridView1.Columns.Insert(datangColumnIndex, datang);
                 // Set DataGridView to display cells with full content
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
@@ -63,6 +167,7 @@ namespace WinFormsApp7
                     };
                     dataGridView1.Columns.Add(deleteButton);
                 }
+                dataGridView1.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(dataGridView1_EditingControlShowing);
             }
             catch (Exception ex)
             {
@@ -71,6 +176,30 @@ namespace WinFormsApp7
             finally
             {
                 connection.Close();
+            }
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex == dataGridView1.Columns["NIK"].Index)
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress -= new KeyPressEventHandler(Numeric_KeyPress);
+                    tb.KeyPress += new KeyPressEventHandler(Numeric_KeyPress);
+                    tb.TextChanged -= new EventHandler(Numeric_TextChanged);
+                    tb.TextChanged += new EventHandler(Numeric_TextChanged);
+                }
+            }
+            else
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress -= new KeyPressEventHandler(Numeric_KeyPress);
+                    tb.TextChanged -= new EventHandler(Numeric_TextChanged);
+                }
             }
         }
 
