@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
@@ -46,6 +47,9 @@ namespace WinFormsApp7
 
                 // Set DataGridView to display cells with full content
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+                // Disable the automatic new row
+                dataGridView1.AllowUserToAddRows = false;
 
                 // Add delete button column if not already present
                 if (dataGridView1.Columns["deleteButton"] == null)
@@ -215,89 +219,38 @@ namespace WinFormsApp7
                     worksheet.Cells[$"G{78 + i}"].Value = SafeGetCellValue("Alamat_Sponsor");
                     worksheet.Cells[$"O{78 + i}"].Value = SafeGetCellValue("Jenis_Kelamin");
                     worksheet.Cells[$"U{78 + i}"].Value = SafeGetCellValue("Tempat_Lahir");
-                    worksheet.Cells[$"AB{78 + i}"].Value = SafeGetCellValue("Tanggal_Lahir");
-                    worksheet.Cells[$"AK{78 + i}"].Value = SafeGetCellValue("Kewarganegaraan");
-                    worksheet.Cells[$"AR{78 + i}"].Value = SafeGetCellValue("No_SK_Penetapan_WNI");
-                    worksheet.Cells[$"AY{78 + i}"].Value = SafeGetCellValue("Akta_Lahir");
-                    worksheet.Cells[$"B{98 + i}"].Value = SafeGetCellValue("Nomor_Akta_Kelahiran");
-                    worksheet.Cells[$"I{98 + i}"].Value = SafeGetCellValue("Golongan_Darah");
-                    worksheet.Cells[$"M{98 + i}"].Value = SafeGetCellValue("Agama");
-                    worksheet.Cells[$"Q{98 + i}"].Value = SafeGetCellValue("Nama_Organisasi_Kepercayaan");
-                    worksheet.Cells[$"AD{98 + i}"].Value = SafeGetCellValue("Status_Perkawinan");
-                    worksheet.Cells[$"AK{98 + i}"].Value = SafeGetCellValue("Akta_Perkawinan");
-                    worksheet.Cells[$"AK{98 + i}"].Value = SafeGetCellValue("Nomor_Akta_Perkawinan");
-                    worksheet.Cells[$"AY{98 + i}"].Value = SafeGetCellValue("Tanggal_Perkawinan");
-                    worksheet.Cells[$"B{112 + i}"].Value = SafeGetCellValue("Akta_Cerai");
-                    worksheet.Cells[$"E{112 + i}"].Value = SafeGetCellValue("Nomor_Akta_Cerai");
-                    worksheet.Cells[$"J{112 + i}"].Value = SafeGetCellValue("Tanggal_Perceraian");
-                    worksheet.Cells[$"M{112 + i}"].Value = SafeGetCellValue("Status_Hubungan_Dalam_Keluarga");
-                    worksheet.Cells[$"T{112 + i}"].Value = SafeGetCellValue("Kelainan_Fisik_dan_Mental");
-                    worksheet.Cells[$"AA{112 + i}"].Value = SafeGetCellValue("Penyandang_Cacat");
-                    worksheet.Cells[$"AF{112 + i}"].Value = SafeGetCellValue("Pendidikan_Terakhir");
-                    worksheet.Cells[$"AK{112 + i}"].Value = SafeGetCellValue("Jenis_Pekerjaan");
-                    worksheet.Cells[$"AO{112 + i}"].Value = SafeGetCellValue("Nomor_ITAS_ITAP");
-                    worksheet.Cells[$"AV{112 + i}"].Value = SafeGetCellValue("Tanggal_Terbit_ITAS_ITAP");
-                    worksheet.Cells[$"B{126 + i}"].Value = SafeGetCellValue("Tanggal_Terbit_ITAS_ITAP");
-                    worksheet.Cells[$"G{126 + i}"].Value = SafeGetCellValue("Tanggal_Akhir_ITAS_ITAP");
-                    worksheet.Cells[$"K{126 + i}"].Value = SafeGetCellValue("Tempat_Datang_Pertama");
-                    worksheet.Cells[$"S{126 + i}"].Value = SafeGetCellValue("Tanggal_Kedatangan_Pertama");
-                    worksheet.Cells[$"Z{126 + i}"].Value = SafeGetCellValue("NIK_Ibu");
-                    worksheet.Cells[$"AG{126 + i}"].Value = SafeGetCellValue("Nama_Ibu");
-                    worksheet.Cells[$"AO{126 + i}"].Value = SafeGetCellValue("NIK_Ayah");
-                    worksheet.Cells[$"AU{126 + i}"].Value = SafeGetCellValue("Nama_Ayah");
+                    worksheet.Cells[$"AB{78 + i}"].Value = SafeGetCellValue("Tgl_Lahir");
+                    worksheet.Cells[$"AM{78 + i}"].Value = SafeGetCellValue("Agama");
+                    worksheet.Cells[$"AR{78 + i}"].Value = SafeGetCellValue("Kepercayaan_Tuhan_YME");
+                    worksheet.Cells[$"AW{78 + i}"].Value = SafeGetCellValue("Status_Perkawinan");
+                    worksheet.Cells[$"BB{78 + i}"].Value = SafeGetCellValue("Tgl_Perkawinan");
+                    worksheet.Cells[$"BG{78 + i}"].Value = SafeGetCellValue("Akta_Perkawinan");
+                    worksheet.Cells[$"BL{78 + i}"].Value = SafeGetCellValue("Nomor_Akta_Perkawinan");
+                    worksheet.Cells[$"BQ{78 + i}"].Value = SafeGetCellValue("Akta_Perceraian");
+                    worksheet.Cells[$"BV{78 + i}"].Value = SafeGetCellValue("Nomor_Akta_Perceraian");
+                    worksheet.Cells[$"CA{78 + i}"].Value = SafeGetCellValue("Tanggal_Perceraian");
+                    worksheet.Cells[$"CH{78 + i}"].Value = SafeGetCellValue("Status_Hubungan");
+                    worksheet.Cells[$"CP{78 + i}"].Value = SafeGetCellValue("Kelainan_Fisik");
+                    worksheet.Cells[$"CU{78 + i}"].Value = SafeGetCellValue("Penyandang_Cacat");
+                    worksheet.Cells[$"B{92 + i}"].Value = SafeGetCellValue("Pendidikan_Terakhir");
+                    worksheet.Cells[$"H{92 + i}"].Value = SafeGetCellValue("Pekerjaan");
 
-                    // New fields
-                    // Alamat
-                    worksheet.Cells[$"S{14 + i}"].Value = SafeGetCellValue("nama_kepala_keluarga");
-
-                    worksheet.Cells[$"S{16 + i}"].Value = SafeGetCellValue("alamat");
-
-                    // RT split
-                    var rt = SafeGetCellValue("rt").Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (rt.Length > 0) worksheet.Cells[$"AB{20}"].Value = rt[0];
-                    if (rt.Length > 1) worksheet.Cells[$"AC{20}"].Value = rt[1];
-                    if (rt.Length > 2) worksheet.Cells[$"AD{20}"].Value = rt[2];
-
-                    // RW split
-                    var rw = SafeGetCellValue("rw").Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (rw.Length > 0) worksheet.Cells[$"AI{20}"].Value = rw[0];
-                    if (rw.Length > 1) worksheet.Cells[$"AJ{20}"].Value = rw[1];
-                    if (rw.Length > 2) worksheet.Cells[$"AK{20}"].Value = rw[2];
-
-                    // Jumlah Anggota Keluarga split
-                    var jumlahAnggotaKeluarga = SafeGetCellValue("jumlah_anggota_keluarga").Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (jumlahAnggotaKeluarga.Length > 0) worksheet.Cells[$"AX{20}"].Value = jumlahAnggotaKeluarga[0];
-                    if (jumlahAnggotaKeluarga.Length > 1) worksheet.Cells[$"AY{20}"].Value = jumlahAnggotaKeluarga[1];
-                    if (jumlahAnggotaKeluarga.Length > 2) worksheet.Cells[$"AZ{20}"].Value = jumlahAnggotaKeluarga[2];
-
-                    // Telepon
-                    worksheet.Cells[$"S{22 + i}"].Value = SafeGetCellValue("telepon");
-
-                    // Email
-                    worksheet.Cells[$"S{24 + i}"].Value = SafeGetCellValue("email");
-
-                    // Kode Desa split
-                    var kodeDesa = SafeGetCellValue("kode_desa").Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (kodeDesa.Length > 0) worksheet.Cells[$"S{33}"].Value = kodeDesa[0];
-                    if (kodeDesa.Length > 1) worksheet.Cells[$"T{33}"].Value = kodeDesa[1];
-
-                    // Nama Dusun
-                    worksheet.Cells[$"S{35}"].Value = SafeGetCellValue("nama_dusun");
-
-                    // Alamat Luar Negeri
-                    worksheet.Cells[$"N{37}"].Value = SafeGetCellValue("alamat_luar_negeri");
-
-                    // Kota Luar Negeri
-                    worksheet.Cells[$"N{39}"].Value = SafeGetCellValue("kota_luar_negeri");
-
-                    // Provinsi Negara Bagian Luar Negeri
-                    worksheet.Cells[$"AL{39}"].Value = SafeGetCellValue("provinsi_negara_bagian_luar_negeri");
-
-                    // Negara
-                    worksheet.Cells[$"N{41}"].Value = SafeGetCellValue("negara_luar_negeri");
-
-                    // Kode Pos
-                    worksheet.Cells[$"S{43}"].Value = SafeGetCellValue("kode_pos_luar_negeri");
+                    // Additional fields
+                    worksheet.Cells[$"O{92 + i}"].Value = SafeGetCellValue("NIK_Ayah");
+                    worksheet.Cells[$"U{92 + i}"].Value = SafeGetCellValue("Nama_Ayah");
+                    worksheet.Cells[$"AD{92 + i}"].Value = SafeGetCellValue("NIK_Ibu");
+                    worksheet.Cells[$"AJ{92 + i}"].Value = SafeGetCellValue("Nama_Ibu");
+                    worksheet.Cells[$"AS{92 + i}"].Value = SafeGetCellValue("No_Akta_Lahir");
+                    worksheet.Cells[$"AZ{92 + i}"].Value = SafeGetCellValue("Gol_Darah");
+                    worksheet.Cells[$"BE{92 + i}"].Value = SafeGetCellValue("Jenis_Dokumen_Imigrasi");
+                    worksheet.Cells[$"BJ{92 + i}"].Value = SafeGetCellValue("No_Dokumen_Imigrasi");
+                    worksheet.Cells[$"BP{92 + i}"].Value = SafeGetCellValue("Tanggal_Terbit_Dokumen");
+                    worksheet.Cells[$"BY{92 + i}"].Value = SafeGetCellValue("Tempat_Terbit_Dokumen");
+                    worksheet.Cells[$"CF{92 + i}"].Value = SafeGetCellValue("Nomor_KITAS");
+                    worksheet.Cells[$"CL{92 + i}"].Value = SafeGetCellValue("Nomor_KITAP");
+                    worksheet.Cells[$"B{106 + i}"].Value = SafeGetCellValue("NIK");
+                    worksheet.Cells[$"J{106 + i}"].Value = SafeGetCellValue("Nama_Lengkap");
+                    worksheet.Cells[$"AA{106 + i}"].Value = SafeGetCellValue("Nomor_Akta_Lahir");
                 }
 
                 package.SaveAs(new FileInfo(newFilePath));
@@ -306,29 +259,49 @@ namespace WinFormsApp7
             return newFilePath;
         }
 
-
-
-
-
         private void ConvertExcelToPdf(string excelFilePath, string pdfFilePath)
         {
             Excel.Application excelApp = new Excel.Application();
-            Excel.Workbook workbook = excelApp.Workbooks.Open(excelFilePath);
+            excelApp.Visible = false;
 
+            Excel.Workbook workbook = excelApp.Workbooks.Open(excelFilePath);
+            workbook.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, pdfFilePath);
+
+            workbook.Close(false);
+            excelApp.Quit();
+
+            ReleaseObject(workbook);
+            ReleaseObject(excelApp);
+        }
+
+        private void ReleaseObject(object obj)
+        {
             try
             {
-                workbook.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, pdfFilePath);
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Unable to release the object " + ex.ToString());
             }
             finally
             {
-                workbook.Close(false);
-                excelApp.Quit();
+                GC.Collect();
             }
+        }
+
+        private void tambahBarisButton_Click(object sender, EventArgs e)
+        {
+            DataRow newRow = dataTable.NewRow();
+            newRow["Nomor_KK"] = nomorKK; // Set Nomor_KK for new row
+            dataTable.Rows.Add(newRow);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            // Handle cell content click events if needed
         }
     }
 }

@@ -32,6 +32,7 @@
             deleteRowButton = new Button();
             saveButton = new Button();
             printButton = new Button();
+            tambahBarisButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -78,11 +79,23 @@
             printButton.UseVisualStyleBackColor = true;
             printButton.Click += printButton_Click;
             // 
+            // tambahBarisButton
+            // 
+            tambahBarisButton.Location = new Point(299, 448);
+            tambahBarisButton.Margin = new Padding(4, 3, 4, 3);
+            tambahBarisButton.Name = "tambahBarisButton";
+            tambahBarisButton.Size = new Size(120, 27);
+            tambahBarisButton.TabIndex = 4;
+            tambahBarisButton.Text = "Tambah Baris";
+            tambahBarisButton.UseVisualStyleBackColor = true;
+            tambahBarisButton.Click += tambahBarisButton_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(933, 519);
+            Controls.Add(tambahBarisButton);
             Controls.Add(printButton);
             Controls.Add(saveButton);
             Controls.Add(deleteRowButton);
@@ -96,9 +109,10 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button deleteRowButton;
-        private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button printButton;
+        private DataGridView dataGridView1;
+        private Button deleteRowButton;
+        private Button saveButton;
+        private Button printButton;
+        private Button tambahBarisButton;
     }
 }
