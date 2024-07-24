@@ -74,7 +74,7 @@ namespace WinFormsApp7
                     Name = "Agama",
                     HeaderText = "Agama",
                     DataPropertyName = "Agama",
-                    DataSource = new string[] { "Islam", "Kristen", "Katholik", "Hindu", "Budha", "KongHucu" }
+                    DataSource = new string[] { "Islam", "Kristen", "Katolik", "Hindu", "Budha", "Konghucu" }
                 };
                 int genderagamaIndex = dataGridView1.Columns["Agama"].Index;
                 dataGridView1.Columns.RemoveAt(genderagamaIndex);
@@ -90,6 +90,40 @@ namespace WinFormsApp7
                 int genderColumnIndex = dataGridView1.Columns["Jenis_Kelamin"].Index;
                 dataGridView1.Columns.RemoveAt(genderColumnIndex);
                 dataGridView1.Columns.Insert(genderColumnIndex, comboBoxColumn);
+
+                DataGridViewComboBoxColumn comboWNIColumn = new DataGridViewComboBoxColumn
+                {
+                    Name = "Kewarganegaraan",
+                    HeaderText = "Kewarganegaraan",
+                    DataPropertyName = "Kewarganegaraan",
+                    DataSource = new string[] { "WNI", "WNA" }
+                };
+                int kewarganegaraanColumnIndex = dataGridView1.Columns["Kewarganegaraan"].Index;
+                dataGridView1.Columns.RemoveAt(kewarganegaraanColumnIndex);
+                dataGridView1.Columns.Insert(kewarganegaraanColumnIndex, comboWNIColumn);
+
+                DataGridViewComboBoxColumn combogoldarColumn = new DataGridViewComboBoxColumn
+                {
+                    Name = "Golongan_Darah",
+                    HeaderText = "Golongan Darah",
+                    DataPropertyName = "Golongan_Darah",
+                    DataSource = new string[] { "A", "AB", "B", "O" }
+                };
+                int goldarColumnIndex = dataGridView1.Columns["Golongan_Darah"].Index;
+                dataGridView1.Columns.RemoveAt(goldarColumnIndex);
+                dataGridView1.Columns.Insert(goldarColumnIndex, combogoldarColumn);
+
+                //status perkawinan
+                DataGridViewComboBoxColumn combostatuskawinColumn = new DataGridViewComboBoxColumn
+                {
+                    Name = "Status_Perkawinan",
+                    HeaderText = "Status Perkawinan",
+                    DataPropertyName = "Status_Perkawinan",
+                    DataSource = new string[] { "BELUM KAWIN", "KAWIN", "CERAI HIDUP", "CERAI MATI" }
+                };
+                int statuskawinColumnIndex = dataGridView1.Columns["Status_Perkawinan"].Index;
+                dataGridView1.Columns.RemoveAt(statuskawinColumnIndex);
+                dataGridView1.Columns.Insert(statuskawinColumnIndex, combostatuskawinColumn);
 
                 DataGridViewCalendarColumn birthdate = new DataGridViewCalendarColumn
                 {
@@ -192,7 +226,9 @@ namespace WinFormsApp7
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (dataGridView1.CurrentCell.ColumnIndex == dataGridView1.Columns["NIK"].Index)
+            if (dataGridView1.CurrentCell.ColumnIndex == dataGridView1.Columns["NIK"].Index ||
+        dataGridView1.CurrentCell.ColumnIndex == dataGridView1.Columns["NIK_Ibu"].Index ||
+        dataGridView1.CurrentCell.ColumnIndex == dataGridView1.Columns["NIK_Ayah"].Index)
             {
                 TextBox tb = e.Control as TextBox;
                 if (tb != null)
