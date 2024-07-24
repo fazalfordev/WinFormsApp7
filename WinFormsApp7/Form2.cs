@@ -397,46 +397,6 @@ namespace WinFormsApp7
                     worksheet.Cells[$"AG{126 + i}"].Value = dataGridView1.Rows[i].Cells["Nama_Ibu"].Value?.ToString();
                     worksheet.Cells[$"AO{126 + i}"].Value = dataGridView1.Rows[i].Cells["NIK_Ayah"].Value?.ToString();
                     worksheet.Cells[$"AU{126 + i}"].Value = dataGridView1.Rows[i].Cells["Nama_Ayah"].Value?.ToString();
-                    worksheet.Cells[$"B{64 + i}"].Value = SafeGetCellValue("Nama_Lengkap");
-                    worksheet.Cells[$"S{64 + i}"].Value = SafeGetCellValue("Gelar_Depan");
-                    worksheet.Cells[$"W{64 + i}"].Value = SafeGetCellValue("Gelar_Belakang");
-                    worksheet.Cells[$"AA{64 + i}"].Value = SafeGetCellValue("Passport_Number");
-                    worksheet.Cells[$"AH{64 + i}"].Value = FormatDate(row.Cells["Tgl_Berakhir_Paspor"].Value);
-                    worksheet.Cells[$"AP{64 + i}"].Value = SafeGetCellValue("Nama_Sponsor");
-                    worksheet.Cells[$"B{78 + i}"].Value = SafeGetCellValue("Tipe_Sponsor");
-                    worksheet.Cells[$"G{78 + i}"].Value = SafeGetCellValue("Alamat_Sponsor");
-                    worksheet.Cells[$"O{78 + i}"].Value = SafeGetCellValue("Jenis_Kelamin");
-                    worksheet.Cells[$"U{78 + i}"].Value = SafeGetCellValue("Tempat_Lahir");
-                    worksheet.Cells[$"AB{78 + i}"].Value = FormatDate(row.Cells["Tanggal_Lahir"].Value);
-                    worksheet.Cells[$"AK{78 + i}"].Value = SafeGetCellValue("Kewarganegaraan");
-                    worksheet.Cells[$"AR{78 + i}"].Value = SafeGetCellValue("No_SK_Penetapan_WNI");
-                    worksheet.Cells[$"AY{78 + i}"].Value = SafeGetCellValue("Akta_Lahir");
-                    worksheet.Cells[$"B{98 + i}"].Value = SafeGetCellValue("Nomor_Akta_Kelahiran");
-                    worksheet.Cells[$"I{98 + i}"].Value = SafeGetCellValue("Golongan_Darah");
-                    worksheet.Cells[$"M{98 + i}"].Value = SafeGetCellValue("Agama");
-                    worksheet.Cells[$"Q{98 + i}"].Value = SafeGetCellValue("Nama_Organisasi_Kepercayaan");
-                    worksheet.Cells[$"AD{98 + i}"].Value = SafeGetCellValue("Status_Perkawinan");
-                    worksheet.Cells[$"AK{98 + i}"].Value = SafeGetCellValue("Akta_Perkawinan");
-                    worksheet.Cells[$"AK{98 + i}"].Value = SafeGetCellValue("Nomor_Akta_Perkawinan");
-                    worksheet.Cells[$"AY{98 + i}"].Value = SafeGetCellValue("Tanggal_Perkawinan");
-                    worksheet.Cells[$"B{112 + i}"].Value = SafeGetCellValue("Akta_Cerai");
-                    worksheet.Cells[$"E{112 + i}"].Value = SafeGetCellValue("Nomor_Akta_Cerai");
-                    worksheet.Cells[$"J{112 + i}"].Value = SafeGetCellValue("Tanggal_Perceraian");
-                    worksheet.Cells[$"M{112 + i}"].Value = SafeGetCellValue("Status_Hubungan_Dalam_Keluarga");
-                    worksheet.Cells[$"T{112 + i}"].Value = SafeGetCellValue("Kelainan_Fisik_dan_Mental");
-                    worksheet.Cells[$"AA{112 + i}"].Value = SafeGetCellValue("Penyandang_Cacat");
-                    worksheet.Cells[$"AF{112 + i}"].Value = SafeGetCellValue("Pendidikan_Terakhir");
-                    worksheet.Cells[$"AK{112 + i}"].Value = SafeGetCellValue("Jenis_Pekerjaan");
-                    worksheet.Cells[$"AO{112 + i}"].Value = SafeGetCellValue("Nomor_ITAS_ITAP");
-                    worksheet.Cells[$"AV{112 + i}"].Value = FormatDate(row.Cells["Tanggal_Terbit_ITAS_ITAP"].Value);
-                    worksheet.Cells[$"B{126 + i}"].Value = FormatDate(row.Cells["Tanggal_Terbit_ITAS_ITAP"].Value);
-                    worksheet.Cells[$"G{126 + i}"].Value = FormatDate(row.Cells["Tanggal_Akhir_ITAS_ITAP"].Value);
-                    worksheet.Cells[$"K{126 + i}"].Value = SafeGetCellValue("Tempat_Datang_Pertama");
-                    worksheet.Cells[$"S{126 + i}"].Value = SafeGetCellValue("Tanggal_Kedatangan_Pertama");
-                    worksheet.Cells[$"Z{126 + i}"].Value = SafeGetCellValue("NIK_Ibu");
-                    worksheet.Cells[$"AG{126 + i}"].Value = SafeGetCellValue("Nama_Ibu");
-                    worksheet.Cells[$"AO{126 + i}"].Value = SafeGetCellValue("NIK_Ayah");
-                    worksheet.Cells[$"AU{126 + i}"].Value = SafeGetCellValue("Nama_Ayah");
 
                     // New fields
                     // Alamat
