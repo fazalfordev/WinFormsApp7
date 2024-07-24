@@ -84,7 +84,7 @@
             checkBox1.Location = new Point(434, 218);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(203, 19);
-            checkBox1.TabIndex = 2;
+            checkBox1.TabIndex = 9;
             checkBox1.Text = "Anggota Keluarga di Luar Negeri?";
             checkBox1.UseVisualStyleBackColor = true;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged_1;
@@ -94,7 +94,7 @@
             button1.Location = new Point(265, 215);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
-            button1.TabIndex = 3;
+            button1.TabIndex = 10;
             button1.Text = "Submit";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -211,7 +211,7 @@
             Kode_Kelurahan.MaxLength = 2;
             Kode_Kelurahan.Name = "Kode_Kelurahan";
             Kode_Kelurahan.Size = new Size(53, 23);
-            Kode_Kelurahan.TabIndex = 0;
+            Kode_Kelurahan.TabIndex = 6;
             Kode_Kelurahan.TextChanged += Kode_Kelurahan_TextChanged;
             // 
             // Nama_Kelurahan
@@ -240,7 +240,7 @@
             Nama_Dusun.Margin = new Padding(3, 2, 3, 2);
             Nama_Dusun.Name = "Nama_Dusun";
             Nama_Dusun.Size = new Size(438, 23);
-            Nama_Dusun.TabIndex = 1;
+            Nama_Dusun.TabIndex = 8;
             Nama_Dusun.TextChanged += Nama_Dusun_TextChanged;
             // 
             // label7

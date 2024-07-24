@@ -241,7 +241,7 @@
             // 
             Kode_NegaraLN.Location = new Point(236, 230);
             Kode_NegaraLN.Margin = new Padding(3, 2, 3, 2);
-            Kode_NegaraLN.MaxLength = 2;
+            Kode_NegaraLN.MaxLength = 3;
             Kode_NegaraLN.Name = "Kode_NegaraLN";
             Kode_NegaraLN.Size = new Size(50, 23);
             Kode_NegaraLN.TabIndex = 8;
@@ -260,7 +260,7 @@
             // 
             Kode_Perwakilan_RILN.Location = new Point(236, 264);
             Kode_Perwakilan_RILN.Margin = new Padding(3, 2, 3, 2);
-            Kode_Perwakilan_RILN.MaxLength = 2;
+            Kode_Perwakilan_RILN.MaxLength = 3;
             Kode_Perwakilan_RILN.Name = "Kode_Perwakilan_RILN";
             Kode_Perwakilan_RILN.Size = new Size(50, 23);
             Kode_Perwakilan_RILN.TabIndex = 10;

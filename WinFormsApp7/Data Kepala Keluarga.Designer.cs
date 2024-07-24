@@ -19,6 +19,12 @@
         {
             label1 = new Label();
             groupBox1 = new GroupBox();
+            textBox13 = new TextBox();
+            textBox12 = new TextBox();
+            textBox11 = new TextBox();
+            textBox10 = new TextBox();
+            textBox9 = new TextBox();
+            textBox8 = new TextBox();
             textBox7 = new TextBox();
             textBox6 = new TextBox();
             textBox5 = new TextBox();
@@ -62,6 +68,12 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(textBox13);
+            groupBox1.Controls.Add(textBox12);
+            groupBox1.Controls.Add(textBox11);
+            groupBox1.Controls.Add(textBox10);
+            groupBox1.Controls.Add(textBox9);
+            groupBox1.Controls.Add(textBox8);
             groupBox1.Controls.Add(textBox7);
             groupBox1.Controls.Add(textBox6);
             groupBox1.Controls.Add(textBox5);
@@ -97,65 +109,129 @@
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             groupBox1.Text = "Informasi Kepala Keluarga";
+            groupBox1.Enter += groupBox1_Enter;
+            // 
+            // textBox13
+            // 
+            textBox13.Location = new Point(498, 53);
+            textBox13.Margin = new Padding(3, 2, 3, 2);
+            textBox13.MaxLength = 4;
+            textBox13.Name = "textBox13";
+            textBox13.Size = new Size(60, 23);
+            textBox13.TabIndex = 13;
+            textBox13.TextAlign = HorizontalAlignment.Center;
+            textBox13.TextChanged += textBox13_TextChanged;
+            // 
+            // textBox12
+            // 
+            textBox12.Location = new Point(450, 53);
+            textBox12.Margin = new Padding(3, 2, 3, 2);
+            textBox12.MaxLength = 2;
+            textBox12.Name = "textBox12";
+            textBox12.Size = new Size(42, 23);
+            textBox12.TabIndex = 12;
+            textBox12.TextAlign = HorizontalAlignment.Center;
+            // 
+            // textBox11
+            // 
+            textBox11.Location = new Point(402, 53);
+            textBox11.Margin = new Padding(3, 2, 3, 2);
+            textBox11.MaxLength = 2;
+            textBox11.Name = "textBox11";
+            textBox11.Size = new Size(42, 23);
+            textBox11.TabIndex = 11;
+            textBox11.TextAlign = HorizontalAlignment.Center;
+            // 
+            // textBox10
+            // 
+            textBox10.Location = new Point(498, 23);
+            textBox10.Margin = new Padding(3, 2, 3, 2);
+            textBox10.MaxLength = 4;
+            textBox10.Name = "textBox10";
+            textBox10.Size = new Size(60, 23);
+            textBox10.TabIndex = 6;
+            textBox10.TextAlign = HorizontalAlignment.Center;
+            textBox10.TextChanged += textBox10_TextChanged;
+            // 
+            // textBox9
+            // 
+            textBox9.Location = new Point(450, 23);
+            textBox9.Margin = new Padding(3, 2, 3, 2);
+            textBox9.MaxLength = 2;
+            textBox9.Name = "textBox9";
+            textBox9.Size = new Size(42, 23);
+            textBox9.TabIndex = 5;
+            textBox9.TextAlign = HorizontalAlignment.Center;
+            // 
+            // textBox8
+            // 
+            textBox8.Location = new Point(402, 23);
+            textBox8.Margin = new Padding(3, 2, 3, 2);
+            textBox8.MaxLength = 2;
+            textBox8.Name = "textBox8";
+            textBox8.Size = new Size(42, 23);
+            textBox8.TabIndex = 4;
+            textBox8.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(488, 53);
+            textBox7.Location = new Point(354, 53);
             textBox7.Margin = new Padding(3, 2, 3, 2);
-            textBox7.MaxLength = 4;
+            textBox7.MaxLength = 2;
             textBox7.Name = "textBox7";
-            textBox7.Size = new Size(70, 23);
-            textBox7.TabIndex = 7;
+            textBox7.Size = new Size(42, 23);
+            textBox7.TabIndex = 10;
             textBox7.TextAlign = HorizontalAlignment.Center;
+            textBox7.TextChanged += textBox7_TextChanged;
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(393, 53);
+            textBox6.Location = new Point(306, 53);
             textBox6.Margin = new Padding(3, 2, 3, 2);
-            textBox6.MaxLength = 4;
+            textBox6.MaxLength = 2;
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(70, 23);
-            textBox6.TabIndex = 6;
+            textBox6.Size = new Size(42, 23);
+            textBox6.TabIndex = 9;
             textBox6.TextAlign = HorizontalAlignment.Center;
             textBox6.TextChanged += textBox6_TextChanged;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(298, 53);
+            textBox5.Location = new Point(258, 53);
             textBox5.Margin = new Padding(3, 2, 3, 2);
-            textBox5.MaxLength = 4;
+            textBox5.MaxLength = 2;
             textBox5.Name = "textBox5";
-            textBox5.Size = new Size(70, 23);
-            textBox5.TabIndex = 5;
+            textBox5.Size = new Size(42, 23);
+            textBox5.TabIndex = 8;
             textBox5.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(488, 20);
+            textBox4.Location = new Point(354, 23);
             textBox4.Margin = new Padding(3, 2, 3, 2);
-            textBox4.MaxLength = 4;
+            textBox4.MaxLength = 2;
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(70, 23);
+            textBox4.Size = new Size(42, 23);
             textBox4.TabIndex = 3;
             textBox4.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(393, 20);
+            textBox3.Location = new Point(306, 23);
             textBox3.Margin = new Padding(3, 2, 3, 2);
-            textBox3.MaxLength = 4;
+            textBox3.MaxLength = 2;
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(70, 23);
+            textBox3.Size = new Size(42, 23);
             textBox3.TabIndex = 2;
             textBox3.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(298, 20);
+            textBox2.Location = new Point(258, 23);
             textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.MaxLength = 4;
+            textBox2.MaxLength = 2;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(70, 23);
+            textBox2.Size = new Size(42, 23);
             textBox2.TabIndex = 1;
             textBox2.TextAlign = HorizontalAlignment.Center;
             textBox2.TextChanged += textBox2_TextChanged_1;
@@ -173,9 +249,9 @@
             // 
             Nomor_KK.Location = new Point(210, 23);
             Nomor_KK.Margin = new Padding(3, 2, 3, 2);
-            Nomor_KK.MaxLength = 4;
+            Nomor_KK.MaxLength = 2;
             Nomor_KK.Name = "Nomor_KK";
-            Nomor_KK.Size = new Size(70, 23);
+            Nomor_KK.Size = new Size(42, 23);
             Nomor_KK.TabIndex = 0;
             Nomor_KK.TextAlign = HorizontalAlignment.Center;
             Nomor_KK.TextChanged += Nomor_KK_TextChanged;
@@ -193,10 +269,10 @@
             // 
             textBox1.Location = new Point(210, 53);
             textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.MaxLength = 4;
+            textBox1.MaxLength = 2;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(70, 23);
-            textBox1.TabIndex = 4;
+            textBox1.Size = new Size(42, 23);
+            textBox1.TabIndex = 7;
             textBox1.TextAlign = HorizontalAlignment.Center;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
@@ -205,7 +281,7 @@
             button1.Location = new Point(503, 217);
             button1.Name = "button1";
             button1.Size = new Size(85, 23);
-            button1.TabIndex = 17;
+            button1.TabIndex = 22;
             button1.Text = "Selanjutnya";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -225,7 +301,7 @@
             Nama_Kepala_Keluarga.Margin = new Padding(3, 2, 3, 2);
             Nama_Kepala_Keluarga.Name = "Nama_Kepala_Keluarga";
             Nama_Kepala_Keluarga.Size = new Size(348, 23);
-            Nama_Kepala_Keluarga.TabIndex = 8;
+            Nama_Kepala_Keluarga.TabIndex = 14;
             Nama_Kepala_Keluarga.TextChanged += Nama_Kepala_Keluarga_TextChanged;
             // 
             // label3
@@ -243,7 +319,7 @@
             Alamat1.Margin = new Padding(3, 2, 3, 2);
             Alamat1.Name = "Alamat1";
             Alamat1.Size = new Size(348, 23);
-            Alamat1.TabIndex = 9;
+            Alamat1.TabIndex = 15;
             Alamat1.TextChanged += Alamat1_TextChanged;
             // 
             // label4
@@ -263,7 +339,7 @@
             Kode_Pos.Name = "Kode_Pos";
             Kode_Pos.ReadOnly = true;
             Kode_Pos.Size = new Size(70, 23);
-            Kode_Pos.TabIndex = 11;
+            Kode_Pos.TabIndex = 16;
             Kode_Pos.Text = "16120";
             Kode_Pos.TextChanged += Kode_Pos_TextChanged;
             // 
@@ -284,7 +360,7 @@
             RT.Name = "RT";
             RT.ReadOnly = true;
             RT.Size = new Size(42, 23);
-            RT.TabIndex = 12;
+            RT.TabIndex = 17;
             RT.Text = "001";
             RT.TextChanged += RT_TextChanged;
             // 
@@ -305,7 +381,7 @@
             RW.Name = "RW";
             RW.ReadOnly = true;
             RW.Size = new Size(42, 23);
-            RW.TabIndex = 13;
+            RW.TabIndex = 18;
             RW.Text = "001";
             RW.TextChanged += RW_TextChanged;
             // 
@@ -325,7 +401,7 @@
             Jumlah_Anggota_Keluarga.MaxLength = 2;
             Jumlah_Anggota_Keluarga.Name = "Jumlah_Anggota_Keluarga";
             Jumlah_Anggota_Keluarga.Size = new Size(42, 23);
-            Jumlah_Anggota_Keluarga.TabIndex = 14;
+            Jumlah_Anggota_Keluarga.TabIndex = 19;
             Jumlah_Anggota_Keluarga.TextChanged += Jumlah_Anggota_Keluarga_TextChanged;
             // 
             // label8
@@ -344,7 +420,7 @@
             telephone.MaxLength = 13;
             telephone.Name = "telephone";
             telephone.Size = new Size(116, 23);
-            telephone.TabIndex = 15;
+            telephone.TabIndex = 20;
             telephone.TextChanged += telephone_TextChanged;
             // 
             // label9
@@ -362,7 +438,7 @@
             Email.Margin = new Padding(3, 2, 3, 2);
             Email.Name = "Email";
             Email.Size = new Size(272, 23);
-            Email.TabIndex = 16;
+            Email.TabIndex = 21;
             Email.TextChanged += Email_TextChanged;
             // 
             // Data_Kepala_Keluarga
@@ -413,5 +489,11 @@
         private TextBox textBox6;
         private TextBox textBox5;
         private TextBox textBox7;
+        private TextBox textBox8;
+        private TextBox textBox13;
+        private TextBox textBox12;
+        private TextBox textBox11;
+        private TextBox textBox10;
+        private TextBox textBox9;
     }
 }
