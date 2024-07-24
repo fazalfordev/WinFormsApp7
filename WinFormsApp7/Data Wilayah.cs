@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace UAS
 {
@@ -19,18 +20,8 @@ namespace UAS
         {
             InitializeComponent();
             this.parentForm = parent;
+            Kode_Kelurahan.KeyPress += Numeric_KeyPress;
         }
-
-        //public string KodeProvinsi => Kode_Provinsi.Text;
-        //public string NamaProvinsi => Nama_Provinsi.Text;
-        //public string KodeKabupaten => Kode_Kabupaten.Text;
-        //public string NamaKabupaten => Nama_Kabupaten.Text;
-        //public string KodeKecamatan => Kode_Kecamatan.Text;
-        //public string NamaKecamatan => Nama_Kecamatan.Text;
-        //public string KodeKelurahan => Kode_Kelurahan.Text;
-        //public string NamaKelurahan => Nama_Kelurahan.Text;
-        //public string NamaDusun => Nama_Dusun.Text;
-
         private void Kode_Provinsi_TextChanged(object sender, EventArgs e)
         {
 
@@ -167,9 +158,6 @@ namespace UAS
                 }
             }
         }
-
-
-
         private void SaveDataWithoutAlamatWNI()
         {
             string connectionString = "Server=localhost;Database=kartu_keluarga;User ID=root;Password=;";
@@ -230,9 +218,6 @@ namespace UAS
                 }
             }
         }
-
-
-
         private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -241,6 +226,14 @@ namespace UAS
                 {
                     dataAlamatWNI.ShowDialog();
                 }
+            }
+        }
+        private void Numeric_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Check if the entered key is a digit or a control key (like backspace)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Suppress the key press if it's not a digit or control key
             }
         }
     }

@@ -84,7 +84,7 @@
             checkBox1.Location = new Point(434, 218);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(203, 19);
-            checkBox1.TabIndex = 18;
+            checkBox1.TabIndex = 10;
             checkBox1.Text = "Anggota Keluarga di Luar Negeri?";
             checkBox1.UseVisualStyleBackColor = true;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged_1;
@@ -94,7 +94,7 @@
             button1.Location = new Point(265, 215);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
-            button1.TabIndex = 17;
+            button1.TabIndex = 9;
             button1.Text = "Submit";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -114,7 +114,7 @@
             Kode_Provinsi.Margin = new Padding(3, 2, 3, 2);
             Kode_Provinsi.Name = "Kode_Provinsi";
             Kode_Provinsi.Size = new Size(53, 23);
-            Kode_Provinsi.TabIndex = 3;
+            Kode_Provinsi.TabIndex = 0;
             Kode_Provinsi.Text = "32";
             Kode_Provinsi.TextChanged += Kode_Provinsi_TextChanged;
             // 
@@ -124,7 +124,7 @@
             Nama_Provinsi.Margin = new Padding(3, 2, 3, 2);
             Nama_Provinsi.Name = "Nama_Provinsi";
             Nama_Provinsi.Size = new Size(438, 23);
-            Nama_Provinsi.TabIndex = 4;
+            Nama_Provinsi.TabIndex = 1;
             Nama_Provinsi.Text = "Jawa Barat";
             Nama_Provinsi.TextChanged += Nama_Provinsi_TextChanged;
             // 
@@ -143,7 +143,7 @@
             Kode_Kabupaten.Margin = new Padding(3, 2, 3, 2);
             Kode_Kabupaten.Name = "Kode_Kabupaten";
             Kode_Kabupaten.Size = new Size(53, 23);
-            Kode_Kabupaten.TabIndex = 5;
+            Kode_Kabupaten.TabIndex = 2;
             Kode_Kabupaten.Text = "01";
             Kode_Kabupaten.TextChanged += Kode_Kabupaten_TextChanged;
             // 
@@ -153,7 +153,7 @@
             Nama_Kabupaten.Margin = new Padding(3, 2, 3, 2);
             Nama_Kabupaten.Name = "Nama_Kabupaten";
             Nama_Kabupaten.Size = new Size(438, 23);
-            Nama_Kabupaten.TabIndex = 6;
+            Nama_Kabupaten.TabIndex = 3;
             Nama_Kabupaten.Text = "Kabupaten Bogor";
             Nama_Kabupaten.TextChanged += Nama_Kabupaten_TextChanged;
             // 
@@ -172,7 +172,7 @@
             Kode_Kecamatan.Margin = new Padding(3, 2, 3, 2);
             Kode_Kecamatan.Name = "Kode_Kecamatan";
             Kode_Kecamatan.Size = new Size(53, 23);
-            Kode_Kecamatan.TabIndex = 8;
+            Kode_Kecamatan.TabIndex = 4;
             Kode_Kecamatan.Text = "11";
             Kode_Kecamatan.TextChanged += Kode_Kecamatan_TextChanged;
             // 
@@ -182,7 +182,7 @@
             Nama_Kecamatan.Margin = new Padding(3, 2, 3, 2);
             Nama_Kecamatan.Name = "Nama_Kecamatan";
             Nama_Kecamatan.Size = new Size(438, 23);
-            Nama_Kecamatan.TabIndex = 9;
+            Nama_Kecamatan.TabIndex = 5;
             Nama_Kecamatan.Text = "Kecamatan Ciseeng";
             Nama_Kecamatan.TextChanged += Nama_Kecamatan_TextChanged;
             // 
@@ -201,7 +201,7 @@
             Kode_Kelurahan.Margin = new Padding(3, 2, 3, 2);
             Kode_Kelurahan.Name = "Kode_Kelurahan";
             Kode_Kelurahan.Size = new Size(53, 23);
-            Kode_Kelurahan.TabIndex = 11;
+            Kode_Kelurahan.TabIndex = 6;
             Kode_Kelurahan.TextChanged += Kode_Kelurahan_TextChanged;
             // 
             // Nama_Kelurahan
@@ -210,7 +210,7 @@
             Nama_Kelurahan.Margin = new Padding(3, 2, 3, 2);
             Nama_Kelurahan.Name = "Nama_Kelurahan";
             Nama_Kelurahan.Size = new Size(438, 23);
-            Nama_Kelurahan.TabIndex = 12;
+            Nama_Kelurahan.TabIndex = 7;
             Nama_Kelurahan.Text = "Kelurahan CIBEUTEUNG MUARA";
             Nama_Kelurahan.TextChanged += Nama_Kelurahan_TextChanged;
             // 
@@ -229,7 +229,7 @@
             Nama_Dusun.Margin = new Padding(3, 2, 3, 2);
             Nama_Dusun.Name = "Nama_Dusun";
             Nama_Dusun.Size = new Size(438, 23);
-            Nama_Dusun.TabIndex = 14;
+            Nama_Dusun.TabIndex = 8;
             Nama_Dusun.TextChanged += Nama_Dusun_TextChanged;
             // 
             // label7
