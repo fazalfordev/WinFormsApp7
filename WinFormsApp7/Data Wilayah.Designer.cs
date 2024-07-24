@@ -112,6 +112,7 @@
             // 
             Kode_Provinsi.Location = new Point(131, 28);
             Kode_Provinsi.Margin = new Padding(3, 2, 3, 2);
+            Kode_Provinsi.MaxLength = 2;
             Kode_Provinsi.Name = "Kode_Provinsi";
             Kode_Provinsi.Size = new Size(53, 23);
             Kode_Provinsi.TabIndex = 0;
@@ -141,6 +142,7 @@
             // 
             Kode_Kabupaten.Location = new Point(131, 62);
             Kode_Kabupaten.Margin = new Padding(3, 2, 3, 2);
+            Kode_Kabupaten.MaxLength = 2;
             Kode_Kabupaten.Name = "Kode_Kabupaten";
             Kode_Kabupaten.Size = new Size(53, 23);
             Kode_Kabupaten.TabIndex = 2;
@@ -170,6 +172,7 @@
             // 
             Kode_Kecamatan.Location = new Point(131, 95);
             Kode_Kecamatan.Margin = new Padding(3, 2, 3, 2);
+            Kode_Kecamatan.MaxLength = 2;
             Kode_Kecamatan.Name = "Kode_Kecamatan";
             Kode_Kecamatan.Size = new Size(53, 23);
             Kode_Kecamatan.TabIndex = 4;
@@ -199,6 +202,7 @@
             // 
             Kode_Kelurahan.Location = new Point(131, 129);
             Kode_Kelurahan.Margin = new Padding(3, 2, 3, 2);
+            Kode_Kelurahan.MaxLength = 2;
             Kode_Kelurahan.Name = "Kode_Kelurahan";
             Kode_Kelurahan.Size = new Size(53, 23);
             Kode_Kelurahan.TabIndex = 6;

@@ -16,6 +16,7 @@ namespace UAS
         public Data_Alamat_WNI()
         {
             InitializeComponent();
+            RegisterNumericKeyPressEvents();
         }
 
         public string Alamat => AlamatLN.Text;
@@ -30,6 +31,19 @@ namespace UAS
         public string NamaNegara => textBox1.Text;
         public string KodePerwakilanRI => Kode_Perwakilan_RILN.Text;
         public string NamaPerwakilanRI => textBox2.Text;
+        private void RegisterNumericKeyPressEvents()
+        {
+            Kode_PosLN.KeyPress += Numeric_KeyPress;
+            Jumlah_Anggota_KeluargaLN.KeyPress += Numeric_KeyPress;
+            TeleponLN.KeyPress += Numeric_KeyPress;
+            Kode_NegaraLN.KeyPress += Numeric_KeyPress;
+            Kode_Perwakilan_RILN.KeyPress += Numeric_KeyPress;
+        }
+        private void Numeric_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
 
         private void Alamat_TextChanged(object sender, EventArgs e)
         {

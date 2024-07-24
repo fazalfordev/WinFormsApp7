@@ -85,7 +85,7 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(665, 375);
+            groupBox1.Size = new Size(665, 355);
             groupBox1.TabIndex = 18;
             groupBox1.TabStop = false;
             groupBox1.Text = "Informasi Alamat";
@@ -96,7 +96,7 @@
             textBox2.Margin = new Padding(3, 2, 3, 2);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(339, 23);
-            textBox2.TabIndex = 32;
+            textBox2.TabIndex = 11;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
             // textBox1
@@ -105,7 +105,7 @@
             textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(339, 23);
-            textBox1.TabIndex = 31;
+            textBox1.TabIndex = 9;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button1
@@ -113,7 +113,7 @@
             button1.Location = new Point(318, 318);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
-            button1.TabIndex = 30;
+            button1.TabIndex = 12;
             button1.Text = "Simpan";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -133,7 +133,7 @@
             AlamatLN.Margin = new Padding(3, 2, 3, 2);
             AlamatLN.Name = "AlamatLN";
             AlamatLN.Size = new Size(517, 23);
-            AlamatLN.TabIndex = 3;
+            AlamatLN.TabIndex = 0;
             AlamatLN.TextChanged += Alamat_TextChanged;
             // 
             // label3
@@ -151,7 +151,7 @@
             KotaLN.Margin = new Padding(3, 2, 3, 2);
             KotaLN.Name = "KotaLN";
             KotaLN.Size = new Size(182, 23);
-            KotaLN.TabIndex = 5;
+            KotaLN.TabIndex = 1;
             KotaLN.TextChanged += Kota_TextChanged;
             // 
             // label4
@@ -169,7 +169,7 @@
             ProvinsiLN.Margin = new Padding(3, 2, 3, 2);
             ProvinsiLN.Name = "ProvinsiLN";
             ProvinsiLN.Size = new Size(165, 23);
-            ProvinsiLN.TabIndex = 8;
+            ProvinsiLN.TabIndex = 2;
             ProvinsiLN.TextChanged += Provinsi_TextChanged;
             // 
             // label5
@@ -187,7 +187,7 @@
             NegaraLN.Margin = new Padding(3, 2, 3, 2);
             NegaraLN.Name = "NegaraLN";
             NegaraLN.Size = new Size(517, 23);
-            NegaraLN.TabIndex = 11;
+            NegaraLN.TabIndex = 3;
             NegaraLN.TextChanged += Negara_TextChanged;
             // 
             // label6
@@ -205,7 +205,7 @@
             Kode_PosLN.Margin = new Padding(3, 2, 3, 2);
             Kode_PosLN.Name = "Kode_PosLN";
             Kode_PosLN.Size = new Size(182, 23);
-            Kode_PosLN.TabIndex = 14;
+            Kode_PosLN.TabIndex = 4;
             Kode_PosLN.TextChanged += Kode_Pos_TextChanged;
             // 
             // label7
@@ -223,7 +223,7 @@
             Jumlah_Anggota_KeluargaLN.Margin = new Padding(3, 2, 3, 2);
             Jumlah_Anggota_KeluargaLN.Name = "Jumlah_Anggota_KeluargaLN";
             Jumlah_Anggota_KeluargaLN.Size = new Size(168, 23);
-            Jumlah_Anggota_KeluargaLN.TabIndex = 17;
+            Jumlah_Anggota_KeluargaLN.TabIndex = 5;
             Jumlah_Anggota_KeluargaLN.TextChanged += Jumlah_Anggota_Keluarga_TextChanged;
             // 
             // label8
@@ -241,7 +241,7 @@
             Kode_NegaraLN.Margin = new Padding(3, 2, 3, 2);
             Kode_NegaraLN.Name = "Kode_NegaraLN";
             Kode_NegaraLN.Size = new Size(50, 23);
-            Kode_NegaraLN.TabIndex = 20;
+            Kode_NegaraLN.TabIndex = 8;
             Kode_NegaraLN.TextChanged += Kode_Nama_Negara_TextChanged;
             // 
             // label9
@@ -259,7 +259,7 @@
             Kode_Perwakilan_RILN.Margin = new Padding(3, 2, 3, 2);
             Kode_Perwakilan_RILN.Name = "Kode_Perwakilan_RILN";
             Kode_Perwakilan_RILN.Size = new Size(50, 23);
-            Kode_Perwakilan_RILN.TabIndex = 23;
+            Kode_Perwakilan_RILN.TabIndex = 10;
             Kode_Perwakilan_RILN.TextChanged += Kode_Nama_Perwakilan_RI_TextChanged;
             // 
             // label10
@@ -277,7 +277,7 @@
             TeleponLN.Margin = new Padding(3, 2, 3, 2);
             TeleponLN.Name = "TeleponLN";
             TeleponLN.Size = new Size(485, 23);
-            TeleponLN.TabIndex = 26;
+            TeleponLN.TabIndex = 6;
             TeleponLN.TextChanged += Telepon_TextChanged;
             // 
             // label11
@@ -295,14 +295,14 @@
             EmailLN.Margin = new Padding(3, 2, 3, 2);
             EmailLN.Name = "EmailLN";
             EmailLN.Size = new Size(412, 23);
-            EmailLN.TabIndex = 29;
+            EmailLN.TabIndex = 7;
             EmailLN.TextChanged += Email_TextChanged;
             // 
             // Data_Alamat_WNI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 450);
+            ClientSize = new Size(700, 420);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);

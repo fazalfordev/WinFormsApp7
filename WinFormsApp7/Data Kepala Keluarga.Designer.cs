@@ -173,7 +173,7 @@
             // 
             // Nomor_KK
             // 
-            Nomor_KK.Location = new Point(210, 20);
+            Nomor_KK.Location = new Point(210, 23);
             Nomor_KK.Margin = new Padding(3, 2, 3, 2);
             Nomor_KK.MaxLength = 4;
             Nomor_KK.Name = "Nomor_KK";
@@ -204,7 +204,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(518, 257);
+            button1.Location = new Point(503, 250);
             button1.Name = "button1";
             button1.Size = new Size(85, 23);
             button1.TabIndex = 17;
@@ -270,6 +270,7 @@
             // 
             Kode_Pos.Location = new Point(210, 185);
             Kode_Pos.Margin = new Padding(3, 2, 3, 2);
+            Kode_Pos.MaxLength = 5;
             Kode_Pos.Name = "Kode_Pos";
             Kode_Pos.Size = new Size(70, 23);
             Kode_Pos.TabIndex = 11;
@@ -289,6 +290,7 @@
             // 
             RT.Location = new Point(338, 185);
             RT.Margin = new Padding(3, 2, 3, 2);
+            RT.MaxLength = 3;
             RT.Name = "RT";
             RT.Size = new Size(42, 23);
             RT.TabIndex = 12;
@@ -308,6 +310,7 @@
             // 
             RW.Location = new Point(440, 185);
             RW.Margin = new Padding(3, 2, 3, 2);
+            RW.MaxLength = 3;
             RW.Name = "RW";
             RW.Size = new Size(42, 23);
             RW.TabIndex = 13;
@@ -327,6 +330,7 @@
             // 
             Jumlah_Anggota_Keluarga.Location = new Point(210, 216);
             Jumlah_Anggota_Keluarga.Margin = new Padding(3, 2, 3, 2);
+            Jumlah_Anggota_Keluarga.MaxLength = 2;
             Jumlah_Anggota_Keluarga.Name = "Jumlah_Anggota_Keluarga";
             Jumlah_Anggota_Keluarga.Size = new Size(42, 23);
             Jumlah_Anggota_Keluarga.TabIndex = 14;
